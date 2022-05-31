@@ -1,125 +1,174 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
 </script>
 
 <template>
   <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+    <button arial-label="navigasi" class="hamburger-button">
+      <svg
+        class="hamburger-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="img"
+        width="1em"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5"
+        />
+      </svg>
+    </button>
+    <a href="#/">
+      <h1>WalkSummit</h1>
+    </a>
+    <nav id="drawer">
+      <ul>
+        <li>
+          <a href="">Home</a>
+        </li>
+        <li>
+          <a href="">Kuota</a>
+        </li>
+        <li>
+          <a href="">Search</a>
+        </li>
+        <li>
+          <a href="">Daftar</a>
+        </li>
+        <li>
+          <a href="">SOP</a>
+        </li>
+      </ul>
+    </nav>
   </header>
-
+  <!-- <RouterLink to="/">Home</RouterLink>
+  <RouterLink to="/about">About</RouterLink> -->
   <RouterView />
 </template>
 
-<style>
+<style lang="scss">
 @import "@/assets/base.css";
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
 }
 
 header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-nav {
+  position: -webkit-sticky; /* Safari */
+  position: fixed;
+  top: 0;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  body {
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #e6e6e6;
+  a {
     display: flex;
-    place-items: center;
+    align-items: center;
+    h1 {
+      color: #5e5a5a;
+    }
   }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  .hamburger-button {
+    padding: 0;
+    border: none;
+    background: none;
+    opacity: 1;
+    height: 44px;
+    width: 44px;
+    .hamburger-icon {
+      font-size: 20px;
+      color: #5e5a5a;
+    }
   }
-
-  header {
+  #drawer.open {
+    transform: translate(0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
   nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-250px, 0);
+    -webkit-transform: translate(-250px, 0);
+    -moz-transform: translate(-250px, 0);
+    -ms-transform: translate(-250px, 0);
+    -o-transform: translate(-250px, 0);
+    transition: transform 0.3s ease-in-out;
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #5e5a5a;
 
-    padding: 1rem 0;
-    margin-top: 1rem;
+      width: 50%;
+      gap: 25px;
+      li {
+        list-style-type: none;
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  header {
+    width: 100%;
+    padding: 10px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .hamburger-button {
+      display: none;
+    }
+    a {
+      display: flex;
+      width: 100%;
+      h1 {
+        font-size: 24px;
+      }
+    }
+    nav {
+      display: inherit;
+      position: relative;
+      height: 100%;
+      transform: translate(0, 0);
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        background-color: #e6e6e6;
+      }
+    }
   }
 }
 </style>
