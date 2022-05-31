@@ -25,37 +25,36 @@ import { RouterLink, RouterView } from "vue-router";
         />
       </svg>
     </button>
-    <a href="#/">
-      <h1>WalkSummit</h1>
-    </a>
+    <div class="container">
+      <a class="home" href="/">
+        <h1>WalkSummit</h1>
+      </a>
+    </div>
     <nav id="drawer">
       <ul>
         <li>
-          <a href="">Home</a>
+          <RouterLink class="nav" to="/">Home</RouterLink>
         </li>
         <li>
-          <a href="">Kuota</a>
+          <RouterLink class="nav" to="/kuota">Kuota</RouterLink>
         </li>
         <li>
-          <a href="">Search</a>
+          <RouterLink class="nav" to="/search">Search</RouterLink>
         </li>
         <li>
-          <a href="">Daftar</a>
+          <RouterLink class="nav" to="/daftar">Daftar</RouterLink>
         </li>
         <li>
-          <a href="">SOP</a>
+          <RouterLink class="nav" to="/sop">SOP</RouterLink>
         </li>
       </ul>
     </nav>
   </header>
-  <!-- <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink> -->
+
   <RouterView />
 </template>
 
 <style lang="scss">
-@import "@/assets/base.css";
-
 * {
   margin: 0;
   padding: 0;
@@ -66,20 +65,50 @@ a {
 }
 
 header {
-  position: -webkit-sticky; /* Safari */
   position: fixed;
   top: 0;
   width: 100%;
   padding: 10px 40px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: #e6e6e6;
+  z-index: 99;
   a {
     display: flex;
     align-items: center;
     h1 {
       color: #5e5a5a;
     }
+  }
+  .container {
+    display: flex;
+    padding: 10px 20px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .home {
+    font-family: "Dancing Script", cursive;
+    color: black;
+    position: relative;
+  }
+  .home::after {
+    position: absolute;
+    content: "";
+    width: 0%;
+    height: 4px;
+    background-color: red;
+    left: 50%;
+    bottom: -10px;
+    transition: all 0.4s ease-in-out;
+  }
+  .container:hover {
+    cursor: pointer;
+  }
+  .container:hover .home::after {
+    width: 100%;
+    left: 0;
   }
 
   .hamburger-button {
@@ -90,7 +119,7 @@ header {
     height: 44px;
     width: 44px;
     .hamburger-icon {
-      font-size: 20px;
+      font-size: 44px;
       color: #5e5a5a;
     }
   }
@@ -131,6 +160,28 @@ header {
         }
       }
     }
+  }
+  .nav {
+    font-family: "Dancing Script", cursive;
+    color: black;
+    position: relative;
+  }
+  .nav::after {
+    position: absolute;
+    content: "";
+    width: 0%;
+    height: 4px;
+    background-color: red;
+    left: 50%;
+    bottom: -10px;
+    transition: all 0.4s ease-in-out;
+  }
+  nav:hover {
+    cursor: pointer;
+  }
+  li:hover .nav::after {
+    width: 100%;
+    left: 0;
   }
 }
 

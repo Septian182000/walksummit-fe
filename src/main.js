@@ -8,8 +8,8 @@ app.use(router);
 
 app.mount("#app");
 
-const hamburgerButton = document.querySelector('.hamburger-button');
-const drawer = document.querySelector('#drawer');
+const hamburgerButton = document.querySelector(".hamburger-button");
+const drawer = document.querySelector("#drawer");
 
 hamburgerButton.addEventListener("click", (event) => {
   event.stopPropagation();
