@@ -1,13 +1,12 @@
 <script setup>
 import FormBiodata from "../components/FormBiodata.vue";
 import { reactive } from "@vue/reactivity";
-const emit = defineEmits(['formChanges']);
+const emit = defineEmits(["formChanges"]);
 
-const forms = reactive([
-]);
+const forms = reactive([]);
 
-function callback(id, form){
-  const targetIndex = forms.findIndex(form => form.id == id);
+function callback(id, form) {
+  const targetIndex = forms.findIndex((form) => form.id == id);
   forms[targetIndex] = form;
 }
 
@@ -23,8 +22,8 @@ function addForm() {
   });
 }
 
-function checkForms(){
-  console.log(forms)
+function checkForms() {
+  console.log(forms);
 }
 </script>
 
@@ -38,15 +37,25 @@ function checkForms(){
         <input class="input-berangkat" type="date" />
         <label for="">Tanggal Pulang</label>
         <input class="input-pulang" type="date" />
+        <label for="">Pilih Jalur</label>
+        <select name="jalur" id="jalur">
+          <option value="jalur1">jalur1</option>
+          <option value="jalur2">jalur2</option>
+          <option value="jalur3">jalur3</option>
+          <option value="jalur4">jalur4</option>
+        </select>
       </form>
     </div>
     <h2>Biodata Pendaki</h2>
     <button class="add-button" @click="addForm">Tambah Pendaki</button>
     <div class="biodata-container">
-      <form-biodata  @formChanges="(n) => callback(form.id, n)" :foo.sync="form" v-for="form in forms"></form-biodata>
+      <form-biodata
+        @formChanges="(n) => callback(form.id, n)"
+        :foo.sync="form"
+        v-for="form in forms"
+      ></form-biodata>
     </div>
     <button @click="checkForms" type="submit">Submit</button>
-    <p v-for="form in forms">{{form.toString()}}</p>
   </main>
 </template>
 
@@ -66,6 +75,9 @@ main {
       flex-direction: column;
       padding: 10px 20px;
       input {
+        padding: 5px;
+      }
+      select{
         padding: 5px;
       }
     }

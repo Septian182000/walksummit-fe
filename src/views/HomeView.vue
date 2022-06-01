@@ -261,9 +261,9 @@ main {
         picture {
           img {
             width: 100%;
-            min-height: 400px;
+            min-height: 250px;
             max-width: 700px;
-            max-height: 700px;
+            max-height: 400px;
             background-color: #9d9a9a;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
           }
@@ -289,7 +289,7 @@ main {
         padding: 20px;
         img {
           width: 100%;
-          height: 400px;
+          height: 250px;
           background-color: #9d9a9a;
         }
       }
