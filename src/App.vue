@@ -120,7 +120,7 @@ header {
     width: 44px;
     .hamburger-icon {
       font-size: 44px;
-      color: #5e5a5a;
+      color: white;
     }
   }
   #drawer.open {
