@@ -50,11 +50,11 @@ import { RouterLink, RouterView } from "vue-router";
       </ul>
     </nav>
   </header>
-
   <RouterView />
 </template>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -72,13 +72,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #e6e6e6;
+  background-color: #354259;
   z-index: 99;
   a {
     display: flex;
     align-items: center;
     h1 {
-      color: #5e5a5a;
+      color: whitesmoke;
     }
   }
   .container {
@@ -89,7 +89,7 @@ header {
     align-items: center;
   }
   .home {
-    font-family: "Dancing Script", cursive;
+    font-family: "Quicksand", cursive;
     color: black;
     position: relative;
   }
@@ -162,8 +162,8 @@ header {
     }
   }
   .nav {
-    font-family: "Dancing Script", cursive;
-    color: black;
+    font-family: "Quicksand", cursive;
+    color: whitesmoke;
     position: relative;
   }
   .nav::after {
@@ -217,7 +217,7 @@ header {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        background-color: #e6e6e6;
+        background-color: #354259;
       }
     }
   }

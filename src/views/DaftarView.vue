@@ -1,98 +1,142 @@
 <script setup>
-function addForm(event) {
-  const tambah = document.querySelector(".tambah");
-  console.log(tambah);
+import FormBiodata from "../components/FormBiodata.vue";
+import { reactive } from "@vue/reactivity";
+const emit = defineEmits(['formChanges']);
+
+const forms = reactive([
+]);
+
+function callback(id, form){
+  const targetIndex = forms.findIndex(form => form.id == id);
+  forms[targetIndex] = form;
+}
+
+function addForm() {
+  forms.push({
+    id: Date.now(),
+    nik: "",
+    nama: "",
+    gender: "",
+    alamat: "",
+    noHp: "",
+    noHpOrtu: "",
+  });
+}
+
+function checkForms(){
+  console.log(forms)
 }
 </script>
 
 <template>
   <main>
-    <h1 class="head-title">Form Pendaftaran</h1>
-    <form class="form-tgl"> 
-      <label class="berangkat">Tanggal Berangkat</label> 
-      <input class="input-berangkat" type="date">
-      <label class="pulang">Tanggal Pulang</label> 
-      <input class="input-pulang" type="date">
-    </form>
-    <form class="form-biodata">
-      <label class="nik">Nik</label>
-      <input class="input-nik" type="number">
-      <label class="name">Name</label>
-      <input class="input-name" type="text">
-      <div class="gender">
-        <label class="gender-title">Jenis Kelamin</label><br>
-        <input type="radio" class="input-pria" name="Pria" value="Pria">
-        <label class="pria">Pria</label>
-        <input type="radio" class="input-wanita" name="Wanita" value="Wanita">
-        <label class="wanita">Wanita</label>
-      </div>
-      <label class="no-tlp">No.Telp</label>
-      <input class="input-tlp" type="number">
-      <label class="nik">No.Telp Orang Tua</label>
-      <input class="input-tlp-orangtua" type="number">
-      <label class="alamat">Alamat</label>
-      <input class="input-alamat" type="textarea">
-    </form>
-    <button class="tambah" @click="addForm">Tambah</button>
+    <h2>Daftar Pendakian Gunung</h2>
+
+    <div class="tanggal-container">
+      <form action="">
+        <label for="">Tanggal Berangkat</label>
+        <input class="input-berangkat" type="date" />
+        <label for="">Tanggal Pulang</label>
+        <input class="input-pulang" type="date" />
+      </form>
+    </div>
+    <h2>Biodata Pendaki</h2>
+    <button class="add-button" @click="addForm">Tambah Pendaki</button>
+    <div class="biodata-container">
+    <form-biodata  @formChanges="(n) => callback(form.id, n)" :foo.sync="form" v-for="form in forms"></form-biodata>
+    </div>
+    <button @click="checkForms" type="submit">Submit</button>
   </main>
 </template>
 
 <style scoped lang="scss">
-main{
-  width: 100%;
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
   margin-top: 84px;
-  padding: 20px;
-  .head-title{
-    text-align: center;
-  }
-  .form-tgl{
-    width: 350px;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-    .berangkat, .pulang{
-      margin-top: 10px ;
-    }
-    .input-berangkat, .input-pulang{
-      padding: 8px;
-      margin-top: 10px;
-      width: 200px;
-    }
-  }
-  .form-biodata{
-    width: 350px;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-    .nik, .name, .alamat, .no-tlp, .no-tlp-orangtua{
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-    .gender{
-      margin-top: 10px;
-      margin-bottom: 10px;
-      .pria, .wanita {
-        margin-left: 6px;
-      }
-      .input-pria, .input-wanita{
-        margin: 10px 6px;
+  gap: 10px;
+  .tanggal-container {
+    background-color: antiquewhite;
+    border-radius: 10px;
+    form {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      padding: 10px 20px;
+      input {
+        padding: 5px;
       }
     }
-    .input-nik, .input-name, .input-alamat, .input-tlp, .input-tlp-orangtua{
-      padding: 8px;
+  }
+  .add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100px;
+    height: 44px;
+  }
+  .biodata-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    form {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      padding: 10px 20px;
+      input {
+        padding: 5px;
+        border-radius: 10px;
+      }
+      .radio-button {
+        display: flex;
+        gap: 10px;
+      }
     }
   }
-  .tambah{
-    width: 60%;
-    height: 30px;
-    margin: 0 auto;
+  button {
+    background-color: rgb(141, 220, 141);
+    color: #050b38;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: medium;
+    font-weight: bold;
+    opacity: 0.8;
+  }
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    opacity: 1;
+    background-color: aquamarine;
+  }
+
+  button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
 }
-
+@media only screen and (min-width: 768px) {
+  main {
+    .biodata-container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+@media only screen and (min-width: 1020px) {
+  main {
+    margin-top: 73px;
+    .biodata-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
 @media only screen and (min-width: 1200px) {
   main {
-    .form-tgl, .form-biodata{
-      width: 800px;
+    .biodata-container {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }
