@@ -1,117 +1,30 @@
 <script setup>
 import FormBiodata from "../components/FormBiodata.vue";
+import { reactive } from "@vue/reactivity";
+const emit = defineEmits(['formChanges']);
+
+const forms = reactive([
+]);
+
+function callback(id, form){
+  const targetIndex = forms.findIndex(form => form.id == id);
+  forms[targetIndex] = form;
+}
 
 function addForm() {
-  const biodataContainer = document.querySelector(".biodata-container");
-  // let urutanBio = document.createElement("h3");
-  // urutanBio.innerHTML = "Biodata Pendaki";
-
-  let form = document.createElement("form");
-  form.setAttribute("action", "");
-  form.setAttribute("class", "form-biodata");
-
-  let labelNIK = document.createElement("label");
-  labelNIK.setAttribute("for", "");
-  labelNIK.innerHTML = "NIK";
-
-  let inputNIK = document.createElement("input");
-  inputNIK.setAttribute("type", "text");
-  inputNIK.setAttribute("name", "NIK");
-  inputNIK.setAttribute("placeholder", "NIK");
-
-  let labelNama = document.createElement("label");
-  labelNama.setAttribute("for", "");
-  labelNama.innerHTML = "Nama";
-
-  let inputNama = document.createElement("input");
-  inputNama.setAttribute("type", "text");
-  inputNama.setAttribute("name", "FullName");
-  inputNama.setAttribute("placeholder", "Full Name");
-
-  let radioButton = document.createElement("div");
-  radioButton.setAttribute("class", "radio-button");
-
-  let labelPria = document.createElement("label");
-  labelPria.setAttribute("for", "");
-  labelPria.innerHTML = "Pria";
-
-  let inputPria = document.createElement("input");
-  inputPria.setAttribute("type", "radio");
-  inputPria.setAttribute("name", "gender");
-  inputPria.setAttribute("value", "pria");
-  inputPria.setAttribute("id", "pria");
-
-  let labelWanita = document.createElement("label");
-  labelWanita.setAttribute("for", "");
-  labelWanita.innerHTML = "wanita";
-
-  let inputWanita = document.createElement("input");
-  inputWanita.setAttribute("type", "radio");
-  inputWanita.setAttribute("name", "gender");
-  inputWanita.setAttribute("value", "wanita");
-  inputWanita.setAttribute("id", "wanita");
-
-  let labelAlamat = document.createElement("label");
-  labelAlamat.setAttribute("for", "");
-  labelAlamat.innerHTML = "Alamat";
-
-  let inputAlamat = document.createElement("input");
-  inputAlamat.setAttribute("type", "text");
-  inputAlamat.setAttribute("name", "Alamat");
-  inputAlamat.setAttribute("placeholder", "Alamat");
-
-  let labelNomorTelepon = document.createElement("label");
-  labelNomorTelepon.setAttribute("for", "");
-  labelNomorTelepon.innerHTML = "No Telepon";
-
-  let inputNomorTelepon = document.createElement("input");
-  inputNomorTelepon.setAttribute("type", "number");
-  inputNomorTelepon.setAttribute("name", "Nohp");
-  inputNomorTelepon.setAttribute("placeholder", "No Hp");
-
-  let labelNomorTeleponOrtu = document.createElement("label");
-  labelNomorTeleponOrtu.setAttribute("for", "");
-  labelNomorTeleponOrtu.innerHTML = "No Telepon Orang Tua";
-
-  let inputNomorTeleponOrtu = document.createElement("input");
-  inputNomorTeleponOrtu.setAttribute("type", "number");
-  inputNomorTeleponOrtu.setAttribute("name", "NoHpOrtu");
-  inputNomorTeleponOrtu.setAttribute("placeholder", "No Hp Ortu");
-
-  form.append(labelNIK);
-  form.append(inputNIK);
-  form.append(labelNama);
-  form.append(inputNama);
-  radioButton.append(inputPria);
-  radioButton.append(labelPria);
-  radioButton.append(inputWanita);
-  radioButton.append(labelWanita);
-  form.append(radioButton);
-  form.append(labelAlamat);
-  form.append(inputAlamat);
-  form.append(labelNomorTelepon);
-  form.append(inputNomorTelepon);
-  form.append(labelNomorTeleponOrtu);
-  form.append(inputNomorTeleponOrtu);
-  // biodataContainer.append(urutanBio);
-  biodataContainer.append(form);
-
-  form.style.display = "flex";
-  form.style.gap = "10px";
-  form.style.flexDirection = "column";
-  form.style.padding = "10px 20px";
-  form.style.borderRadius = "10px";
-  form.style.backgroundColor = "#E7DFD5";
-
-  let inputs = document.querySelectorAll(".form-biodata input");
-  console.log(inputs);
-  inputs.forEach((input) => {
-    input.style.padding = "5px";
-    input.style.borderRadius = "10px";
+  forms.push({
+    id: Date.now(),
+    nik: "",
+    nama: "",
+    gender: "",
+    alamat: "",
+    noHp: "",
+    noHpOrtu: "",
   });
+}
 
-  radioButton.style.display = "flex";
-  radioButton.style.gap = "10px";
+function checkForms(){
+  console.log(forms)
 }
 </script>
 
@@ -130,9 +43,10 @@ function addForm() {
     <h2>Biodata Pendaki</h2>
     <button class="add-button" @click="addForm">Tambah Pendaki</button>
     <div class="biodata-container">
-      <form-biodata></form-biodata>
+      <form-biodata  @formChanges="(n) => callback(form.id, n)" :foo.sync="form" v-for="form in forms"></form-biodata>
     </div>
-    <button type="submit">Submit</button>
+    <button @click="checkForms" type="submit">Submit</button>
+    <p v-for="form in forms">{{form.toString()}}</p>
   </main>
 </template>
 
@@ -151,7 +65,7 @@ main {
       gap: 10px;
       flex-direction: column;
       padding: 10px 20px;
-      input{
+      input {
         padding: 5px;
       }
     }
@@ -192,29 +106,37 @@ main {
     font-weight: bold;
     opacity: 0.8;
   }
-  button:hover{
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     opacity: 1;
     background-color: aquamarine;
   }
+
+  button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
 }
 @media only screen and (min-width: 768px) {
   main {
-    .biodata-container{
+    .biodata-container {
       grid-template-columns: repeat(1, 1fr);
     }
   }
 }
 @media only screen and (min-width: 1020px) {
   main {
-    .biodata-container{
+    margin-top: 73px;
+    .biodata-container {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 }
 @media only screen and (min-width: 1200px) {
   main {
-    .biodata-container{
+    .biodata-container {
       grid-template-columns: repeat(3, 1fr);
     }
   }
