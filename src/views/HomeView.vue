@@ -54,33 +54,33 @@
         <div class="alur-daftar-2">
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/Kuota_walksummit.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Cek Kuota Jalur yang tersedia</p>
         </div>
 
         <div class="alur-daftar-3">
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/SOP_walksummit.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Baca dan pahami SOP Pendakian</p>
         </div>
 
         <div class="alur-daftar-4">
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/Daftar_walksummit.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Daftar Pendakian dengan menekan tombol tambah pendaki</p>
         </div>
 
         <div class="alur-daftar-5">
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/Search_walksummit.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Search berdasarkan ID grup</p>
         </div>
 
         <div class="alur-daftar-6">
@@ -181,7 +181,7 @@ main {
       flex-direction: column;
       gap: 5px;
       font-size: 18px;
-      background-color: #DBDFFD;
+      background-color: #dbdffd;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
     .informasi-pendaki-gunung {
@@ -191,7 +191,7 @@ main {
       flex-direction: column;
       gap: 5px;
       font-size: 18px;
-      background-color: #DBDFFD;
+      background-color: #dbdffd;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
     .container {
@@ -257,7 +257,7 @@ main {
         align-items: center;
         padding: 10px 20px;
         gap: 10px;
-        background-color: #DBDFFD;
+        background-color: #dbdffd;
         picture {
           img {
             width: 100%;
