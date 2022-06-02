@@ -86,7 +86,7 @@ form {
   flex-direction: column;
   padding: 10px 20px;
   border-radius: 10px;
-  background-color: #e7dfd5;
+  background-color: #DBDFFD;
   input {
     padding: 5px;
     border-radius: 10px;

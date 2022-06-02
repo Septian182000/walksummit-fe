@@ -23,9 +23,6 @@ function addForm() {
   });
 }
 
-function checkForms(){
-  console.log(forms)
-}
 </script>
 
 <template>
@@ -38,6 +35,13 @@ function checkForms(){
         <input class="input-berangkat" type="date" />
         <label for="">Tanggal Pulang</label>
         <input class="input-pulang" type="date" />
+        <label for="">Pilih Jalur</label>
+        <select name="jalur" id="jalur">
+          <option value="jalur1">jalur1</option>
+          <option value="jalur2">jalur2</option>
+          <option value="jalur3">jalur3</option>
+          <option value="jalur4">jalur4</option>
+        </select>
       </form>
     </div>
     <h2>Biodata Pendaki</h2>
@@ -54,10 +58,10 @@ main {
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
-  margin-top: 84px;
+  margin-top: 80px;
   gap: 10px;
   .tanggal-container {
-    background-color: antiquewhite;
+    background-color: #DBDFFD;
     border-radius: 10px;
     form {
       display: flex;
@@ -65,6 +69,9 @@ main {
       flex-direction: column;
       padding: 10px 20px;
       input {
+        padding: 5px;
+      }
+      select{
         padding: 5px;
       }
     }
@@ -97,7 +104,7 @@ main {
     }
   }
   button {
-    background-color: rgb(141, 220, 141);
+    background-color: rgb(189, 209, 255);
     color: #050b38;
     padding: 10px;
     border-radius: 10px;
@@ -127,7 +134,7 @@ main {
 }
 @media only screen and (min-width: 1020px) {
   main {
-    margin-top: 73px;
+    margin-top: 70px;
     .biodata-container {
       grid-template-columns: repeat(2, 1fr);
     }

@@ -146,7 +146,7 @@ header {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #5e5a5a;
+      background-color: #354259;
 
       width: 50%;
       gap: 25px;

@@ -33,7 +33,7 @@ main {
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
-  margin-top: 84px;
+  margin-top: 80px;
   gap: 10px;
   h2 {
     display: flex;
@@ -73,7 +73,7 @@ main {
     }
 
     .btn-white {
-      background-color: rgb(198, 190, 100);
+      background-color: rgb(146, 198, 254);
       color: #ffff;
     }
 
@@ -83,9 +83,9 @@ main {
     flex-direction: column;
     gap: 20px;
     #list-grup {
-      background-color: antiquewhite;
       padding: 10px;
       border-radius: 10px;
+      background-color: #DBDFFD;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
       font-size: medium;
@@ -97,7 +97,7 @@ main {
 }
 @media only screen and (min-width: 1020px) {
   main {
-    margin-top: 73px;
+    margin-top: 70px;
   }
 }
 @media only screen and (min-width: 1200px) {
