@@ -1,8 +1,114 @@
-<script setup></script>
+<script setup>
+import { reactive } from "@vue/reactivity";
+import axios from "axios";
+function search(searchID) {
+  // const list = listForm;
+  // const listJson = JSON.stringify(list);
+  // const listJsonParse = JSON.parse(listJson);
+  // console.log(listJsonParse);
+  // const filterID = listJsonParse.filter((grup) =>
+  //   grup.id == searchID ? grup : null
+  // );
+  // console.log(filterID);
+  const searchGrup = async () => {
+    const { data } = await axios
+      .get(`http://127.0.0.1:8000/api/cari-grup/${searchID}`)
+      .then(function (response) {
+        return response;
+      })
+      .catch((error) => console.log(error));
+    return data;
+  };
+
+  const show = async () => {
+    const responseJson = await searchGrup();
+    console.log(responseJson.data);
+    const id = responseJson.data.id;
+    const nama = responseJson.data.koordinator;
+    const statusPembayaran = responseJson.data.status == 0 ? 'Belum Bayar' : 'Sudah Lunas';
+    const jalur = responseJson.data.jalur;
+    
+    const listContainer = document.querySelector("#list-grup");
+    listContainer.innerHTML += `
+        <div id="info-grup">
+          <p>Id Grup: ${id}</p>
+          <p>Nama Koordinator: ${nama}</p>
+          <p>Status Pembayaran: ${statusPembayaran}</p>
+          <p>Jalur: ${jalur}</p>
+        </div>
+        <style>
+        #info-grup{
+          background-color: rgb(146, 198, 254);
+          padding: 10px;
+          border-radius: 5px;
+        }
+        #info-grup p {
+          margin: 10px 10px;
+          font-family: 'Quicksand', sans-serif;
+          text-transform: uppercase;
+        }</style>`;
+    listContainer.style.display = "flex";
+    listContainer.style.flexDirection = "column";
+    listContainer.style.gap = "20px";
+  };
+  show();
+}
+
+function clearSearch() {
+  const listContainer = document.querySelector("#list-grup");
+  listContainer.innerHTML = "";
+}
+// const listForm = reactive([
+//   {
+//     id: 1,
+//     nik: 123,
+//     nama: "pertama",
+//     gender: "pria",
+//     alamat: "malang",
+//     noHp: "surabaya",
+//     noHpOrtu: "123123",
+//     statusPembayaran: "Belum",
+//     jalur: "barat",
+//   },
+//   {
+//     id: 2,
+//     nik: 1234,
+//     nama: "kedua",
+//     gender: "wanita",
+//     alamat: "surabaya",
+//     noHp: "12312",
+//     noHpOrtu: "555",
+//     statusPembayaran: "Belum",
+//     jalur: "barat",
+//   },
+//   {
+//     id: 3,
+//     nik: 12345,
+//     nama: "ketiga",
+//     gender: "pria",
+//     alamat: "surabaya",
+//     noHp: "12312",
+//     noHpOrtu: "1231",
+//     statusPembayaran: "Belum",
+//     jalur: "barat",
+//   },
+//   {
+//     id: 4,
+//     nik: 1234456,
+//     nama: "keempat",
+//     gender: "pria",
+//     alamat: "mlg",
+//     noHp: "09123",
+//     noHpOrtu: "123123",
+//     statusPembayaran: "Belum",
+//     jalur: "barat",
+//   },
+// ]);
+</script>
 
 <template>
   <main>
-    <h2>Search Grup Pendaki</h2>
+    <h1>Grub Pendaki</h1>
     <form action="">
       <label for="idsearch">Cari Id Grup:</label>
       <input
@@ -10,61 +116,79 @@
         id="idsearch"
         name="idsearch"
         placeholder="Search.."
+        v-model="searchID"
+        @input="searchInput(searchID)"
       />
     </form>
     <div class="search-button-container">
-      <button type="submit" class="btn btn-white btn- animate">Search</button>
+      <button type="submit" class="btn btn-white" @click="search(searchID)">
+        Search
+      </button>
+      <button type="submit" class="btn btn-red" @click="clearSearch()">
+        Clear
+      </button>
     </div>
 
     <div id="hasil-search-container">
-      <h2>Hasil Search Grup Pendaki</h2>
-      <div id="list-grup">
-        <p>Id Grup: 002</p>
-        <p>Nama Koordinator: 002</p>
-        <p>Status Pembayaran: Diterima</p>
-        <p>Jalur: 002</p>
-      </div>
+      <h2>Hasil Pencarian</h2>
+      <div id="list-grup"></div>
     </div>
   </main>
+  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap');
+
 main {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
-  margin-top: 84px;
+  margin-top: 80px;
   gap: 10px;
-  h2 {
+  h1 {
+    font-family: 'Quicksand', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
   }
   form {
+    width: 70%;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
     label {
-      font-size: medium;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 22px;
       font-weight: bold;
     }
     input {
-      padding: 5px;
+      padding: 10px;
       border-radius: 10px;
+      height: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 20px;
+      color: black;
     }
   }
   .search-button-container {
     display: flex;
     justify-content: center;
+    gap: 5px;
     button {
       padding: 5px 20px;
       border-radius: 10px;
       font-weight: bold;
+      font-family: 'Quicksand', sans-serif;
     }
 
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
     }
 
     .btn:active {
@@ -73,19 +197,30 @@ main {
     }
 
     .btn-white {
-      background-color: rgb(198, 190, 100);
-      color: #ffff;
+      background-color: rgb(143, 188, 144);
+      color: black;
+      font-size: 16px;
     }
-
+    .btn-red {
+      background-color: rgb(255, 110, 66);
+      color: black;
+      font-size: 16px;
+    }
   }
   #hasil-search-container {
     display: flex;
+    width: 60%;
+    margin: 30px auto;
     flex-direction: column;
-    gap: 20px;
+    gap: 20px;  
+    h2{
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+    }
     #list-grup {
-      background-color: antiquewhite;
       padding: 10px;
       border-radius: 10px;
+      background-color: #dbdffd;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
       font-size: medium;
@@ -93,11 +228,22 @@ main {
     }
   }
 }
+footer{
+  background-color: #354259;
+  color: white;
+  font-family: 'Quicksand';
+  font-size: 16px;
+  padding: 16px;
+  text-align: center;
+  span{
+    color: red;
+  }
+}
 @media only screen and (min-width: 768px) {
 }
 @media only screen and (min-width: 1020px) {
   main {
-    margin-top: 73px;
+    margin-top: 70px;
   }
 }
 @media only screen and (min-width: 1200px) {

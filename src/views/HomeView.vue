@@ -54,33 +54,33 @@
         <div class="alur-daftar-2">
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/Kuota_walksummit.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Cek Kuota Jalur yang tersedia</p>
         </div>
 
         <div class="alur-daftar-3">
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/SOP_walksummit.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Baca dan pahami SOP Pendakian</p>
         </div>
 
         <div class="alur-daftar-4">
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/Daftar_walksummit.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Daftar Pendakian dengan menekan tombol tambah pendaki</p>
         </div>
 
         <div class="alur-daftar-5">
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/Search_walksummit.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Search berdasarkan ID grup</p>
         </div>
 
         <div class="alur-daftar-6">
@@ -143,7 +143,7 @@
 main {
   width: 100%;
   height: 100vh;
-  margin-top: 84px;
+  margin-top: 80px;
   #hero {
     position: relative;
     z-index: -2;
@@ -181,7 +181,7 @@ main {
       flex-direction: column;
       gap: 5px;
       font-size: 18px;
-      background-color: #e7dfd5;
+      background-color: #dbdffd;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
     .informasi-pendaki-gunung {
@@ -191,7 +191,7 @@ main {
       flex-direction: column;
       gap: 5px;
       font-size: 18px;
-      background-color: #e7dfd5;
+      background-color: #dbdffd;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
     .container {
@@ -257,13 +257,13 @@ main {
         align-items: center;
         padding: 10px 20px;
         gap: 10px;
-        background-color: antiquewhite;
+        background-color: #dbdffd;
         picture {
           img {
             width: 100%;
-            min-height: 400px;
+            min-height: 250px;
             max-width: 700px;
-            max-height: 700px;
+            max-height: 400px;
             background-color: #9d9a9a;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
           }
@@ -285,11 +285,11 @@ main {
       align-items: center;
       gap: 10px;
       picture {
-        background-color: antiquewhite;
+        background-color: rgb(236, 237, 254);
         padding: 20px;
         img {
           width: 100%;
-          height: 400px;
+          height: 300px;
           background-color: #9d9a9a;
         }
       }
@@ -312,7 +312,7 @@ main {
 }
 @media only screen and (min-width: 1020px) {
   main {
-    margin-top: 73px;
+    margin-top: 70px;
     #alur-daftar-pendaki {
       .alur-daftar-container {
         grid-template-columns: repeat(3, 1fr);

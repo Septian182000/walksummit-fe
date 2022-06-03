@@ -11,21 +11,21 @@
       <div class="card peraturan">
         <h2>Peraturan</h2>
         <ol class="list-peraturan">
-          <li><h3>Tenda (Min 2 kapasitas)</h3></li>
-          <li><h3>P3K</h3></li>
-          <li><h3>Kompor</h3></li>
-          <li><h3>Nesting</h3></li>
-          <li><h3>Logistik</h3></li>
-          <li><h3>Trashback</h3></li>
-          <li><h3>Jas Hujan</h3></li>
-          <li><h3>Jaket Gunung</h3></li>
-          <li><h3>Sarung Tangan Gunung</h3></li>
-          <li><h3>Sepatu/Sendal Gunung</h3></li>
-          <li><h3>Baju/Celana ganti (Min 2)</h3></li>
-          <li><h3>HeadLamp/Senter</h3></li>
-          <li><h3>Masker(Selama Pandemi)</h3></li>
-          <li><h3>Hand Sanitizer(Selama Pandemi)</h3></li>
-          <li><h3>Peralatan Makan</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Tenda (Min 2 kapasitas)</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>P3K</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Kompor</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Nesting</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Logistik</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Trashback</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Jas Hujan</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Jaket Gunung</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Sarung Tangan Gunung</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Sepatu/Sendal Gunung</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Baju/Celana ganti (Min 2)</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>HeadLamp/Senter</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Masker(Selama Pandemi)</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Hand Sanitizer(Selama Pandemi)</h3></li>
+          <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Peralatan Makan</h3></li>
         </ol>
       </div>
       <div class="card larangan">
@@ -35,29 +35,31 @@
           memiliki aturan yang sangat ketat, dan wajib di taati, seperti:
         </h3>
         <ol class="list-larangan">
-          <li><h3>Jaga sopan santun, tidak boleh berbicara sembarangan.</h3></li>
-          <li><h3>Penggunaan tisu basah sangat tidak dianjurkan.</h3></li>
-          <li><h3>Setiap kegiatan pendakian harus melapor pada pihak yang berwenang.</h3></li>
-          <li><h3>Bagi kamu yang mempunyai riwayat penyakit jantung sebaiknya tidak melakukan pendakian.</h3></li>
-          <li><h3>Barang bawaan harus dilaporkan kepada petugas.</h3></li>
-          <li><h3>Dilarang berbuay hal-hal yang tidak senonoh dengan yang bukan mukhrim.</h3></li>
-          <li><h3>Dilarang membuat perapian (setiap pendaki harus ikut menjaga dan mewaspadai terjadinya kebakaran).</h3></li>
-          <li><h3>Dilarang membawa obat-obatan terlarang, senapan, senjata tajam, dan sejenisnya.</h3></li>
-          <li><h3>Dilarang berada atau mendekati bibir kawah, memanjat tiang, atau tugu saat di puncak.</h3></li>
-          <li><h3>Dilarang buang air kecil atau besar di sembarang tempat.</h3></li>
-          <li><h3>Dilarang meinggalkan sampah dalam bentuk apapun kecuali jejak kaki.</h3></li>
-          <li><h3>Untuk berjaga-jaga dengan hal-hal yang tidak diinginkan, sebaiknya patuhi saja aturan yang telah ada.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Jaga sopan santun, tidak boleh berbicara sembarangan.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Penggunaan tisu basah sangat tidak dianjurkan.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Setiap kegiatan pendakian harus melapor pada pihak yang berwenang.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Bagi kamu yang mempunyai riwayat penyakit jantung sebaiknya tidak melakukan pendakian.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Barang bawaan harus dilaporkan kepada petugas.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Dilarang berbuay hal-hal yang tidak senonoh dengan yang bukan mukhrim.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Dilarang membuat perapian (setiap pendaki harus ikut menjaga dan mewaspadai terjadinya kebakaran).</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Dilarang membawa obat-obatan terlarang, senapan, senjata tajam, dan sejenisnya.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Dilarang berada atau mendekati bibir kawah, memanjat tiang, atau tugu saat di puncak.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Dilarang buang air kecil atau besar di sembarang tempat.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Dilarang meinggalkan sampah dalam bentuk apapun kecuali jejak kaki.</h3></li>
+          <li><h3><i class="fa-solid fa-triangle-exclamation warning"></i>Untuk berjaga-jaga dengan hal-hal yang tidak diinginkan, sebaiknya patuhi saja aturan yang telah ada.</h3></li>
         </ol>
       </div>
     </div>
   </main>
+  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap');
-main{ 
-  margin-top: 84px;
+main{
+  margin-top: 80px;
   padding: 20px;
+  min-height: 100vh;
   .header{
     h1{
       text-align: center;
@@ -88,9 +90,29 @@ main{
         li, h3{
           margin-bottom: 10px;
           font-family: 'Quicksand', sans-serif;
+          list-style: none;
+        }
+        .rules{
+          color: #242F9B;
+          margin-right: 8px;
+        }
+        .warning{
+          color: red;
+          margin-right: 8px;
         }
       }
     }
+  }
+}
+footer{
+  background-color: #354259;
+  color: white;
+  font-family: 'Quicksand';
+  font-size: 16px;
+  padding: 16px;
+  text-align: center;
+  span{
+    color: red;
   }
 }
 
