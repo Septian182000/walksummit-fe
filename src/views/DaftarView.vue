@@ -288,6 +288,7 @@ function checkForms() {
     </div>
     <button @click.prevent="checkForms()" type="submit">Submit</button>
   </main>
+  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
@@ -297,6 +298,7 @@ main {
   padding: 10px 20px;
   margin-top: 80px;
   gap: 10px;
+  min-height:100vh;
   .tanggal-container {
     background-color: #dbdffd;
     border-radius: 10px;
@@ -360,6 +362,17 @@ main {
   button:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+footer{
+  background-color: #354259;
+  color: white;
+  font-family: 'Quicksand';
+  font-size: 16px;
+  padding: 16px;
+  text-align: center;
+  span{
+    color: red;
   }
 }
 @media only screen and (min-width: 768px) {

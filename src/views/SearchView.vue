@@ -30,7 +30,7 @@ function search(searchID) {
     
     const listContainer = document.querySelector("#list-grup");
     listContainer.innerHTML += `
-  <div id="info-grup">
+        <div id="info-grup">
           <p>Id Grup: ${id}</p>
           <p>Nama Koordinator: ${nama}</p>
           <p>Status Pembayaran: ${statusPembayaran}</p>
@@ -41,10 +41,15 @@ function search(searchID) {
           background-color: rgb(146, 198, 254);
           padding: 10px;
           border-radius: 5px;
+        }
+        #info-grup p {
+          margin: 10px 10px;
+          font-family: 'Quicksand', sans-serif;
+          text-transform: uppercase;
         }</style>`;
     listContainer.style.display = "flex";
     listContainer.style.flexDirection = "column";
-    listContainer.style.gap = "5px";
+    listContainer.style.gap = "20px";
   };
   show();
 }
@@ -103,7 +108,7 @@ function clearSearch() {
 
 <template>
   <main>
-    <h2>Search Grup Pendaki</h2>
+    <h1>Grub Pendaki</h1>
     <form action="">
       <label for="idsearch">Cari Id Grup:</label>
       <input
@@ -125,35 +130,48 @@ function clearSearch() {
     </div>
 
     <div id="hasil-search-container">
-      <h2>Hasil Search Grup Pendaki</h2>
+      <h2>Hasil Pencarian</h2>
       <div id="list-grup"></div>
     </div>
   </main>
+  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap');
+
 main {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
   margin-top: 80px;
   gap: 10px;
-  h2 {
+  h1 {
+    font-family: 'Quicksand', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
   }
   form {
+    width: 70%;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
     label {
-      font-size: medium;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 22px;
       font-weight: bold;
     }
     input {
-      padding: 5px;
+      padding: 10px;
       border-radius: 10px;
+      height: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 20px;
+      color: black;
     }
   }
   .search-button-container {
@@ -164,11 +182,13 @@ main {
       padding: 5px 20px;
       border-radius: 10px;
       font-weight: bold;
+      font-family: 'Quicksand', sans-serif;
     }
 
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
     }
 
     .btn:active {
@@ -177,18 +197,26 @@ main {
     }
 
     .btn-white {
-      background-color: rgb(146, 198, 254);
-      color: #ffff;
+      background-color: rgb(143, 188, 144);
+      color: black;
+      font-size: 16px;
     }
     .btn-red {
       background-color: rgb(255, 110, 66);
-      color: #ffff;
+      color: black;
+      font-size: 16px;
     }
   }
   #hasil-search-container {
     display: flex;
+    width: 60%;
+    margin: 30px auto;
     flex-direction: column;
-    gap: 20px;
+    gap: 20px;  
+    h2{
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+    }
     #list-grup {
       padding: 10px;
       border-radius: 10px;
@@ -198,6 +226,17 @@ main {
       font-size: medium;
       font-weight: bold;
     }
+  }
+}
+footer{
+  background-color: #354259;
+  color: white;
+  font-family: 'Quicksand';
+  font-size: 16px;
+  padding: 16px;
+  text-align: center;
+  span{
+    color: red;
   }
 }
 @media only screen and (min-width: 768px) {
