@@ -1,4 +1,105 @@
-<script setup></script>
+<script setup>
+import { reactive } from "@vue/reactivity";
+import axios from "axios";
+function search(searchID) {
+  // const list = listForm;
+  // const listJson = JSON.stringify(list);
+  // const listJsonParse = JSON.parse(listJson);
+  // console.log(listJsonParse);
+  // const filterID = listJsonParse.filter((grup) =>
+  //   grup.id == searchID ? grup : null
+  // );
+  // console.log(filterID);
+  const searchGrup = async () => {
+    const { data } = await axios
+      .get(`http://127.0.0.1:8000/api/cari-grup/${searchID}`)
+      .then(function (response) {
+        return response;
+      })
+      .catch((error) => console.log(error));
+    return data;
+  };
+
+  const show = async () => {
+    const responseJson = await searchGrup();
+    console.log(responseJson.data);
+    const id = responseJson.data.id;
+    const nama = responseJson.data.koordinator;
+    const statusPembayaran = responseJson.data.status == 0 ? 'Belum Bayar' : 'Sudah Lunas';
+    const jalur = responseJson.data.jalur;
+    
+    const listContainer = document.querySelector("#list-grup");
+    listContainer.innerHTML += `
+  <div id="info-grup">
+          <p>Id Grup: ${id}</p>
+          <p>Nama Koordinator: ${nama}</p>
+          <p>Status Pembayaran: ${statusPembayaran}</p>
+          <p>Jalur: ${jalur}</p>
+        </div>
+        <style>
+        #info-grup{
+          background-color: rgb(146, 198, 254);
+          padding: 10px;
+          border-radius: 5px;
+        }</style>`;
+    listContainer.style.display = "flex";
+    listContainer.style.flexDirection = "column";
+    listContainer.style.gap = "5px";
+  };
+  show();
+}
+
+function clearSearch() {
+  const listContainer = document.querySelector("#list-grup");
+  listContainer.innerHTML = "";
+}
+// const listForm = reactive([
+//   {
+//     id: 1,
+//     nik: 123,
+//     nama: "pertama",
+//     gender: "pria",
+//     alamat: "malang",
+//     noHp: "surabaya",
+//     noHpOrtu: "123123",
+//     statusPembayaran: "Belum",
+//     jalur: "barat",
+//   },
+//   {
+//     id: 2,
+//     nik: 1234,
+//     nama: "kedua",
+//     gender: "wanita",
+//     alamat: "surabaya",
+//     noHp: "12312",
+//     noHpOrtu: "555",
+//     statusPembayaran: "Belum",
+//     jalur: "barat",
+//   },
+//   {
+//     id: 3,
+//     nik: 12345,
+//     nama: "ketiga",
+//     gender: "pria",
+//     alamat: "surabaya",
+//     noHp: "12312",
+//     noHpOrtu: "1231",
+//     statusPembayaran: "Belum",
+//     jalur: "barat",
+//   },
+//   {
+//     id: 4,
+//     nik: 1234456,
+//     nama: "keempat",
+//     gender: "pria",
+//     alamat: "mlg",
+//     noHp: "09123",
+//     noHpOrtu: "123123",
+//     statusPembayaran: "Belum",
+//     jalur: "barat",
+//   },
+// ]);
+</script>
 
 <template>
   <main>
@@ -10,20 +111,22 @@
         id="idsearch"
         name="idsearch"
         placeholder="Search.."
+        v-model="searchID"
+        @input="searchInput(searchID)"
       />
     </form>
     <div class="search-button-container">
-      <button type="submit" class="btn btn-white btn- animate">Search</button>
+      <button type="submit" class="btn btn-white" @click="search(searchID)">
+        Search
+      </button>
+      <button type="submit" class="btn btn-red" @click="clearSearch()">
+        Clear
+      </button>
     </div>
 
     <div id="hasil-search-container">
       <h2>Hasil Search Grup Pendaki</h2>
-      <div id="list-grup">
-        <p>Id Grup: 002</p>
-        <p>Nama Koordinator: 002</p>
-        <p>Status Pembayaran: Diterima</p>
-        <p>Jalur: 002</p>
-      </div>
+      <div id="list-grup"></div>
     </div>
   </main>
 </template>
@@ -56,6 +159,7 @@ main {
   .search-button-container {
     display: flex;
     justify-content: center;
+    gap: 5px;
     button {
       padding: 5px 20px;
       border-radius: 10px;
@@ -76,7 +180,10 @@ main {
       background-color: rgb(146, 198, 254);
       color: #ffff;
     }
-
+    .btn-red {
+      background-color: rgb(255, 110, 66);
+      color: #ffff;
+    }
   }
   #hasil-search-container {
     display: flex;
@@ -85,7 +192,7 @@ main {
     #list-grup {
       padding: 10px;
       border-radius: 10px;
-      background-color: #DBDFFD;
+      background-color: #dbdffd;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
       font-size: medium;
