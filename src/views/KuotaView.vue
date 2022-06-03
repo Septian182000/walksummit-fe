@@ -1,4 +1,55 @@
 <script setup>
+import axios from "axios";
+import { ref, onMounted } from "vue";
+
+function getAllKuota() {
+  const showKuota = async () => {
+    const { data } = await axios
+      .get(`http://127.0.0.1:8000/api/informasi-gunung`)
+      .then(function (response) {
+        return response;
+      })
+      .catch((error) => console.log(error));
+    return data;
+  };
+  const show = async () => {
+    const responseJson = await showKuota();
+    console.log(responseJson.data);
+    const jalur = responseJson.data.kuota_tiap_jalur;
+    const jalurMap = jalur.map(jalur => {
+      const content = document.querySelector(".content");
+      content.innerHTML += `
+      <div class="card-jalur">
+        <h2>Via ${jalur.nama}</h2>
+        <h3>Sisa Kuota Hari ini : ${jalur.kuota}</h3>
+      </div>
+      <style>
+      .content{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .card-jalur{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 16px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+      }
+      h2,h3{
+          font-family: "Quicksand", sans-serif;
+        }
+      </style>
+      `;
+      })
+  };
+  show();
+}
+
+onMounted(() => {
+  getAllKuota();
+});
 </script>
 
 <template>
@@ -7,47 +58,23 @@
       <h1>Kuota Tiap Jalur</h1>
     </div>
     <div class="content">
-      <div class="card jalur_1">
-        <h2>Via Kledung</h2>
-        <h3>Sisa Kuota Hari ini : 500</h3>
-      </div>
-      <div class="card jalur_2">
-        <h2>Via Alang-Alang Sewu</h2>
-        <h3>Sisa Kuota Hari ini : 500</h3>
-      </div>
-      <div class="card jalur_3">
-        <h2>Via Ndoro Arum</h2>
-        <h3>Sisa Kuota Hari ini : 500</h3>
-      </div>
-      <div class="card jalur_4">
-        <h2>Via Sigedang</h2>
-        <h3>Sisa Kuota Hari ini : 500</h3>
-      </div>
-      <div class="card jalur_5">
-        <h2>Via Bansari</h2>
-        <h3>Sisa Kuota Hari ini : 500</h3>
-      </div>
-      <div class="card jalur_6">
-        <h2>Via Bedakah</h2>
-        <h3>Sisa Kuota Hari ini : 500</h3>
-      </div>
     </div>
   </main>
 </template>
 
 <style scoped lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap');
-main{
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap");
+main {
   margin-top: 84px;
   padding: 20px;
-  h1{
+  h1 {
     text-align: center;
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Quicksand", sans-serif;
   }
-  .content{
+  .content {
     width: 70%;
     margin: 40px auto;
-    .card{
+    .card {
       margin-bottom: 20px;
       padding: 16px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -70,7 +97,7 @@ main{
         width: 80%;
       }
     }
-    .content{
+    .content {
       width: 100%;
       h2 {
         font-size: 20px;

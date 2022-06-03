@@ -35,7 +35,7 @@ const form = reactive({
         <input
           type="radio"
           name="gender"
-          value="pria"
+          value="L"
           id="pria"
           v-model="form.gender"
           @input="$emit('formChanges', form)"
@@ -47,7 +47,7 @@ const form = reactive({
         <input
           type="radio"
           name="gender"
-          value="wanita"
+          value="P"
           id="wanita"
           v-model="form.gender"
           @input="$emit('formChanges', form)"
@@ -86,7 +86,7 @@ form {
   flex-direction: column;
   padding: 10px 20px;
   border-radius: 10px;
-  background-color: #e7dfd5;
+  background-color: #DBDFFD;
   input {
     padding: 5px;
     border-radius: 10px;

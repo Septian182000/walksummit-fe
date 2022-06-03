@@ -56,7 +56,7 @@
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap');
 main{ 
-  margin-top: 84px;
+  margin-top: 80px;
   padding: 20px;
   .header{
     h1{
