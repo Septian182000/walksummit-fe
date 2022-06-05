@@ -79,7 +79,7 @@ main{
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       border-radius: 8px;
       padding: 16px;
-      background-color: #e6e6e6;
+      background-color: #dbdffd;
       margin-bottom: 30px;
       h2,h3 {
         font-family: "Quicksand", sans-serif;

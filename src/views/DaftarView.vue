@@ -262,23 +262,27 @@ function checkForms() {
         />
         {{ pulang }}
         <label for="">Pilih Jalur</label>
-        <select
-          class="jalur"
-          name="jalur"
-          id="jalur"
-          v-model="formsPendakian.jalur"
-        >
-          <option value="1">jalur1</option>
-          <option value="2">jalur2</option>
-          <option value="3">jalur3</option>
-          <option value="4">jalur4</option>
-          <option value="5">jalur5</option>
-        </select>
+        <div class="select">
+          <select
+            class="jalur"
+            name="jalur"
+            id="jalur"
+            v-model="formsPendakian.jalur"
+          >
+            <option value="1">jalur1</option>
+            <option value="2">jalur2</option>
+            <option value="3">jalur3</option>
+            <option value="4">jalur4</option>
+            <option value="5">jalur5</option>
+          </select>
+        </div>
         {{ jalur }}
       </form>
     </div>
-    <h2>Biodata Pendaki</h2>
-    <button class="add-button" @click="addForm">Tambah Pendaki</button>
+    <h2>Informasi Pendaki</h2>
+    <button class="add-button" @click="addForm">
+      <i class="fa-solid fa-user-plus"></i>Pendaki
+    </button>
     <div class="biodata-container">
       <form-biodata
         @formChanges="(n) => callback(form.id, n)"
@@ -286,52 +290,108 @@ function checkForms() {
         v-for="form in forms"
       ></form-biodata>
     </div>
-    <button @click.prevent="checkForms()" type="submit">Submit</button>
+    <button @click.prevent="checkForms()" type="submit">
+      <i class="fa-solid fa-circle-check"></i>Selesai
+    </button>
   </main>
   <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap");
+
 main {
+  width: 80%;
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
-  margin-top: 80px;
+  margin: 80px auto 0 auto;
   gap: 10px;
-  min-height:100vh;
+  min-height: 100vh;
+  h2 {
+    font-family: "Quicksand", sans-serif;
+    margin: 25px 0 15px;
+  }
   .tanggal-container {
     background-color: #dbdffd;
-    border-radius: 10px;
+    border-radius: 20px;
     form {
       display: flex;
       gap: 10px;
       flex-direction: column;
-      padding: 10px 20px;
+      padding: 30px 20px;
+      label {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        margin: 10px 0;
+        color: black;
+      }
       input {
-        padding: 5px;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 800;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 8px;
       }
       select {
-        padding: 5px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        outline: 0;
+        box-shadow: none;
+        border: 0 !important;
+        background: white;
+        background-image: none;
+        flex: 1;
+        padding: 0 0.5em;
+        color: black;
+        cursor: pointer;
+        font-size: 1em;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 800;
+      }
+      select::-ms-expand {
+        display: none;
+      }
+      .select {
+        position: relative;
+        display: flex;
+        height: 2.5em;
+        line-height: 2.5em;
+        background: #5c6664;
+        overflow: hidden;
+        border-radius: 0.25em;
+        border-radius: 8px;
+      }
+      .select::after {
+        content: "\25BC";
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0 1em;
+        background-color: #CA82FF;
+        cursor: pointer;
+        pointer-events: none;
+        transition: 0.25s all ease;
+      }
+      .select:hover::after {
+        color: #FBCB0A;
       }
     }
-  }
-  .add-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    width: 100px;
-    height: 44px;
   }
   .biodata-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 15px;
+    margin: 30px 0;
+    border-radius: 20px;
     form {
       display: flex;
       gap: 10px;
       flex-direction: column;
-      padding: 10px 20px;
+      padding: 20px 20px;
       input {
         padding: 5px;
         border-radius: 10px;
@@ -342,13 +402,35 @@ main {
       }
     }
   }
+  .fa-solid {
+    margin-right: 6px;
+  }
+  .add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 130px;
+    height: 44px;
+    font-weight: 800;
+    background-color: white;
+  }
+  .add-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    opacity: 1;
+    background-color: #f7d716;
+  }
   button {
-    background-color: rgb(189, 209, 255);
+    background-color: white;
     color: #050b38;
     padding: 10px;
+    margin-bottom: 10px;
     border-radius: 10px;
-    font-size: medium;
-    font-weight: bold;
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
     opacity: 0.8;
   }
   button:hover {
@@ -356,7 +438,7 @@ main {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     opacity: 1;
-    background-color: aquamarine;
+    background-color: #83bd75;
   }
 
   button:active {
@@ -364,29 +446,57 @@ main {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
 }
-footer{
+footer {
   background-color: #354259;
   color: white;
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-size: 16px;
   padding: 16px;
   text-align: center;
-  span{
+  span {
     color: red;
+  }
+}
+@media only screen and (max-width: 600px) {
+  main {
+    width: 100%;
+    .tanggal-container {
+      form {
+        .select {
+          width: 60%;
+        }
+      }
+    }
   }
 }
 @media only screen and (min-width: 768px) {
   main {
+    width: 100%;
     .biodata-container {
       grid-template-columns: repeat(1, 1fr);
+    }
+    .tanggal-container {
+      form {
+        .select {
+          width: 40%;
+        }
+      }
     }
   }
 }
 @media only screen and (min-width: 1020px) {
   main {
+    width: 80%;
     margin-top: 70px;
     .biodata-container {
       grid-template-columns: repeat(2, 1fr);
+    }
+    .tanggal-container {
+      form {
+        .select {
+          width: 40%;
+        }
+      }
     }
   }
 }

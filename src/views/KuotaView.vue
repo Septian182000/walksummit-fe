@@ -1,7 +1,6 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
-
 function getAllKuota() {
   const showKuota = async () => {
     const { data } = await axios
@@ -21,7 +20,7 @@ function getAllKuota() {
       content.innerHTML += `
       <div class="card-jalur">
         <h2>Via ${jalur.nama}</h2>
-        <h3>Sisa Kuota Hari ini : ${jalur.kuota}</h3>
+        <h3>Sisa Kuota Hari ini : <i class="fa-solid fa-person-hiking"></i>${jalur.kuota}</h3>
       </div>
       <style>
       .content{
@@ -37,6 +36,10 @@ function getAllKuota() {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         border-radius: 8px;
       }
+      .fa-solid {
+        margin-right: 6px;
+        margin-left: 6px;
+      }
       h2,h3{
           font-family: "Quicksand", sans-serif;
         }
@@ -46,7 +49,6 @@ function getAllKuota() {
   };
   show();
 }
-
 onMounted(() => {
   getAllKuota();
 });
@@ -60,7 +62,6 @@ onMounted(() => {
     <div class="content">
     </div>
   </main>
-  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
@@ -68,7 +69,6 @@ onMounted(() => {
 main {
   margin-top: 84px;
   padding: 20px;
-  min-height: 100vh;
   h1 {
     text-align: center;
     font-family: "Quicksand", sans-serif;
@@ -76,28 +76,6 @@ main {
   .content {
     width: 70%;
     margin: 40px auto;
-    .card {
-      margin-bottom: 20px;
-      padding: 16px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      h2,
-      h3 {
-        font-family: "Quicksand", sans-serif;
-        margin-bottom: 16px;
-      }
-    }
-  }
-}
-footer{
-  background-color: #354259;
-  color: white;
-  font-family: 'Quicksand';
-  font-size: 16px;
-  padding: 16px;
-  text-align: center;
-  span{
-    color: red;
   }
 }
 @media only screen and (max-width: 600px) {
