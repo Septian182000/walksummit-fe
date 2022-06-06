@@ -84,7 +84,6 @@ function checkForms() {
 
   const tambahPendaki = async () => {
     const idGrup = await tambahGrup();
-
     objectBiasa.forEach(async (object) => {
       let inputForm = document.querySelectorAll("input");
       let alertTambah = document.querySelector(".alert-tambah-pendaki");
@@ -99,8 +98,8 @@ function checkForms() {
             no_telp_orgtua: object.no_telp_orgtua,
             jenis_kelamin: object.jenis_kelamin,
           })
-          .then(function (response) {
-            console.log(response);
+          .then(function () {
+            console.log(idGrup);
           })
           .catch((error) => console.log(error));
         return data;
@@ -131,8 +130,57 @@ function checkForms() {
         });
       }
     });
+    showModal(idGrup);
   };
   tambahPendaki();
+
+  const showModal = (idGrup) => {
+    const containerModal = document.querySelector(".modal-container");
+    containerModal.innerHTML = `
+  <div class="message-modal">
+  <h2>MOHON SIMPAN ID GRUP</h2>
+  <p>UNTUK VERIFIKASI PEMBAYARAN</p>
+  <p class="id-grup-modal">ID GRUP ANDA: ${idGrup}</p>
+
+  <div class="tutup-modal">
+  <p>Tutup</p>
+  </div>
+  </div>
+  
+  <style>
+  .message-modal {
+    background-color: #F2EBE9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 5px;
+    border: 1px solid #888;
+  }
+  .message-modal .id-grup-modal{
+    font-size: 24px;
+  }
+  .tutup-modal{
+    background-color: red;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .tutup-modal:hover{
+    cursor: pointer;
+  }
+  </style>
+  `;
+  containerModal.style.display = 'flex';
+
+  containerModal.addEventListener("click", (event) => {
+  event.stopPropagation();
+  containerModal.style.display = 'none';
+});
+  };
 }
 
 // function addForm() {
@@ -346,6 +394,7 @@ function checkForms() {
     <button @click.prevent="checkForms()" type="submit">
       <i class="fa-solid fa-circle-check"></i>Selesai
     </button>
+    <div class="modal-container"></div>
   </main>
   <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
@@ -498,7 +547,26 @@ main {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
+  .modal-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    padding-top: 100px;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
 }
+
 footer {
   background-color: #354259;
   color: white;
