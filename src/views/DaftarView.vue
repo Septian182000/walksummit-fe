@@ -33,17 +33,40 @@ function checkForms() {
   let pulang = document.querySelector(".input-pulang").value;
 
   const tambahGrup = async () => {
-    const data = await axios
-      .post(`http://127.0.0.1:8000/api/tambah-grup`, {
-        jalur_id: jalur,
-        tgl_brangkat: berangkat,
-        tgl_pulang: pulang,
-      })
-      .then(function (response) {
-        return response.data.data.id;
-      })
-      .catch((error) => console.log(error));
-    return data;
+    let alertRequired = document.querySelector(".alert-required");
+    if (!jalur || !berangkat || !pulang) {
+      alertRequired.innerHTML = `
+      <div class="message-alert">
+      <p>Semua Input Wajib diisi</p>
+      </div>
+      <style>
+      .message-alert{
+        display: flex;
+        padding: 10px 20px;
+      }
+      p {
+        display: flex;
+        color: red;
+        padding: 10px;
+        font-weight: bold;
+        background-color: white;
+        border-radius: 10px;
+      }
+      </style>
+      `;
+    } else {
+      const data = await axios
+        .post(`http://127.0.0.1:8000/api/tambah-grup`, {
+          jalur_id: jalur,
+          tgl_brangkat: berangkat,
+          tgl_pulang: pulang,
+        })
+        .then(function (response) {
+          return response.data.data.id;
+        })
+        .catch((error) => console.log(error));
+      return data;
+    }
   };
   tambahGrup();
 
@@ -51,37 +74,62 @@ function checkForms() {
     nik: form.nik,
     alamat: form.alamat,
     nama: form.nama,
-    alamat: form.alamat,
     no_telp: form.noHp,
     no_telp_orgtua: form.noHpOrtu,
     jenis_kelamin: form.gender,
   }));
-
-  // const formYangAkanDiSubmit = {
-  //   anggota: anggota,
-  // }
 
   const stringJSON = JSON.stringify(anggota);
   const objectBiasa = JSON.parse(stringJSON);
 
   const tambahPendaki = async () => {
     const idGrup = await tambahGrup();
+
     objectBiasa.forEach(async (object) => {
-      const data = await axios
-        .post(`http://127.0.0.1:8000/api/tambah-pelanggan`, {
-          grup_id: idGrup,
-          nik: object.nik,
-          nama: object.nama,
-          alamat: object.alamat,
-          no_telp: object.no_telp,
-          no_telp_orgtua: object.no_telp_orgtua,
-          jenis_kelamin: object.jenis_kelamin,
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch((error) => console.log(error));
-      return data;
+      let inputForm = document.querySelectorAll("input");
+      let alertTambah = document.querySelector(".alert-tambah-pendaki");
+      if (inputForm.value) {
+        const data = await axios
+          .post(`http://127.0.0.1:8000/api/tambah-pelanggan`, {
+            grup_id: idGrup,
+            nik: object.nik,
+            nama: object.nama,
+            alamat: object.alamat,
+            no_telp: object.no_telp,
+            no_telp_orgtua: object.no_telp_orgtua,
+            jenis_kelamin: object.jenis_kelamin,
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch((error) => console.log(error));
+        return data;
+      } else {
+        let tesValue = inputForm.forEach((form) => {
+          let valueForm = form.value;
+          if (!valueForm) {
+            alertTambah.innerHTML = `
+          <div class="message-alert-tambah">
+      <p>Semua Input Wajib diisi</p>
+      </div>
+      <style>
+      .message-alert-tambah{
+        display: flex;
+        padding: 10px 20px;
+      }
+      .message-alert-tambah p {
+        display: flex;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        background-color: red;
+        border-radius: 10px;
+      }
+      </style>
+          `;
+          }
+        });
+      }
     });
   };
   tambahPendaki();
@@ -252,6 +300,7 @@ function checkForms() {
           class="input-berangkat"
           type="date"
           v-model="formsPendakian.berangkat"
+          required
         />
         {{ berangkat }}
         <label for="">Tanggal Pulang</label>
@@ -259,6 +308,7 @@ function checkForms() {
           class="input-pulang"
           type="date"
           v-model="formsPendakian.pulang"
+          required
         />
         {{ pulang }}
         <label for="">Pilih Jalur</label>
@@ -268,6 +318,7 @@ function checkForms() {
             name="jalur"
             id="jalur"
             v-model="formsPendakian.jalur"
+            required
           >
             <option value="1">jalur1</option>
             <option value="2">jalur2</option>
@@ -278,11 +329,13 @@ function checkForms() {
         </div>
         {{ jalur }}
       </form>
+      <div class="alert-required"></div>
     </div>
     <h2>Informasi Pendaki</h2>
     <button class="add-button" @click="addForm">
       <i class="fa-solid fa-user-plus"></i>Pendaki
     </button>
+    <div class="alert-tambah-pendaki"></div>
     <div class="biodata-container">
       <form-biodata
         @formChanges="(n) => callback(form.id, n)"
@@ -371,13 +424,13 @@ main {
         top: 0;
         right: 0;
         padding: 0 1em;
-        background-color: #CA82FF;
+        background-color: #ca82ff;
         cursor: pointer;
         pointer-events: none;
         transition: 0.25s all ease;
       }
       .select:hover::after {
-        color: #FBCB0A;
+        color: #fbcb0a;
       }
     }
   }
