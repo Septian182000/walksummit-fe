@@ -33,6 +33,7 @@ const form = reactive({
         placeholder=" "
         v-model="form.nama"
         @input="$emit('formChanges', form)"
+        required
       />
       <label for="" class="input_style__label">Nama</label>
     </div>
@@ -43,6 +44,7 @@ const form = reactive({
         placeholder=" "
         v-model="form.alamat"
         @input="$emit('formChanges', form)"
+        required
       />
       <label for="" class="input_style__label">Alamat</label>
     </div>
@@ -53,6 +55,7 @@ const form = reactive({
         placeholder=" "
         v-model="form.noHp"
         @input="$emit('formChanges', form)"
+        required
       />
       <label for="" class="input_style__label">No.Hp</label>
     </div>
@@ -63,6 +66,7 @@ const form = reactive({
         placeholder=" "
         v-model="form.noHpOrtu"
         @input="$emit('formChanges', form)"
+        required
       />
       <label for="" class="input_style__label">No.Kerabat</label>
     </div>
@@ -76,6 +80,7 @@ const form = reactive({
           id="pria"
           v-model="form.gender"
           @input="$emit('formChanges', form)"
+          required
         />
         <label for="">Pria</label>
       </div>
@@ -88,6 +93,7 @@ const form = reactive({
           id="wanita"
           v-model="form.gender"
           @input="$emit('formChanges', form)"
+          required
         />
         <label for="">Wanita</label>
       </div>

@@ -33,17 +33,40 @@ function checkForms() {
   let pulang = document.querySelector(".input-pulang").value;
 
   const tambahGrup = async () => {
-    const data = await axios
-      .post(`http://127.0.0.1:8000/api/tambah-grup`, {
-        jalur_id: jalur,
-        tgl_brangkat: berangkat,
-        tgl_pulang: pulang,
-      })
-      .then(function (response) {
-        return response.data.data.id;
-      })
-      .catch((error) => console.log(error));
-    return data;
+    let alertRequired = document.querySelector(".alert-required");
+    if (!jalur || !berangkat || !pulang) {
+      alertRequired.innerHTML = `
+      <div class="message-alert">
+      <p>Semua Input Wajib diisi</p>
+      </div>
+      <style>
+      .message-alert{
+        display: flex;
+        padding: 10px 20px;
+      }
+      p {
+        display: flex;
+        color: red;
+        padding: 10px;
+        font-weight: bold;
+        background-color: white;
+        border-radius: 10px;
+      }
+      </style>
+      `;
+    } else {
+      const data = await axios
+        .post(`http://127.0.0.1:8000/api/tambah-grup`, {
+          jalur_id: jalur,
+          tgl_brangkat: berangkat,
+          tgl_pulang: pulang,
+        })
+        .then(function (response) {
+          return response.data.data.id;
+        })
+        .catch((error) => console.log(error));
+      return data;
+    }
   };
   tambahGrup();
 
@@ -56,34 +79,108 @@ function checkForms() {
     jenis_kelamin: form.gender,
   }));
 
-  // const formYangAkanDiSubmit = {
-  //   anggota: anggota,
-  // }
-
   const stringJSON = JSON.stringify(anggota);
   const objectBiasa = JSON.parse(stringJSON);
 
   const tambahPendaki = async () => {
     const idGrup = await tambahGrup();
     objectBiasa.forEach(async (object) => {
-      const data = await axios
-        .post(`http://127.0.0.1:8000/api/tambah-pelanggan`, {
-          grup_id: idGrup,
-          nik: object.nik,
-          nama: object.nama,
-          alamat: object.alamat,
-          no_telp: object.no_telp,
-          no_telp_orgtua: object.no_telp_orgtua,
-          jenis_kelamin: object.jenis_kelamin,
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch((error) => console.log(error));
-      return data;
+      let inputForm = document.querySelectorAll("input");
+      let alertTambah = document.querySelector(".alert-tambah-pendaki");
+      if (inputForm.value) {
+        const data = await axios
+          .post(`http://127.0.0.1:8000/api/tambah-pelanggan`, {
+            grup_id: idGrup,
+            nik: object.nik,
+            nama: object.nama,
+            alamat: object.alamat,
+            no_telp: object.no_telp,
+            no_telp_orgtua: object.no_telp_orgtua,
+            jenis_kelamin: object.jenis_kelamin,
+          })
+          .then(function () {
+            console.log(idGrup);
+          })
+          .catch((error) => console.log(error));
+        return data;
+      } else {
+        let tesValue = inputForm.forEach((form) => {
+          let valueForm = form.value;
+          if (!valueForm) {
+            alertTambah.innerHTML = `
+          <div class="message-alert-tambah">
+      <p>Semua Input Wajib diisi</p>
+      </div>
+      <style>
+      .message-alert-tambah{
+        display: flex;
+        padding: 10px 20px;
+      }
+      .message-alert-tambah p {
+        display: flex;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        background-color: red;
+        border-radius: 10px;
+      }
+      </style>
+          `;
+          }
+        });
+      }
     });
+    showModal(idGrup);
   };
   tambahPendaki();
+
+  const showModal = (idGrup) => {
+    const containerModal = document.querySelector(".modal-container");
+    containerModal.innerHTML = `
+  <div class="message-modal">
+  <h2>MOHON SIMPAN ID GRUP</h2>
+  <p>UNTUK VERIFIKASI PEMBAYARAN</p>
+  <p class="id-grup-modal">ID GRUP ANDA: ${idGrup}</p>
+
+  <div class="tutup-modal">
+  <p>Tutup</p>
+  </div>
+  </div>
+  
+  <style>
+  .message-modal {
+    background-color: #F2EBE9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 5px;
+    border: 1px solid #888;
+  }
+  .message-modal .id-grup-modal{
+    font-size: 24px;
+  }
+  .tutup-modal{
+    background-color: red;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .tutup-modal:hover{
+    cursor: pointer;
+  }
+  </style>
+  `;
+  containerModal.style.display = 'flex';
+
+  containerModal.addEventListener("click", (event) => {
+  event.stopPropagation();
+  containerModal.style.display = 'none';
+});
+  };
 }
 
 // function addForm() {
@@ -251,6 +348,7 @@ function checkForms() {
           class="input-berangkat"
           type="date"
           v-model="formsPendakian.berangkat"
+          required
         />
         {{ berangkat }}
         <label for="">Tanggal Pulang</label>
@@ -258,6 +356,7 @@ function checkForms() {
           class="input-pulang"
           type="date"
           v-model="formsPendakian.pulang"
+          required
         />
         {{ pulang }}
         <label for="">Pilih Jalur</label>
@@ -267,6 +366,7 @@ function checkForms() {
             name="jalur"
             id="jalur"
             v-model="formsPendakian.jalur"
+            required
           >
             <option value="1">jalur1</option>
             <option value="2">jalur2</option>
@@ -277,11 +377,13 @@ function checkForms() {
         </div>
         {{ jalur }}
       </form>
+      <div class="alert-required"></div>
     </div>
     <h2>Informasi Pendaki</h2>
     <button class="add-button" @click="addForm">
       <i class="fa-solid fa-user-plus"></i>Pendaki
     </button>
+    <div class="alert-tambah-pendaki"></div>
     <div class="biodata-container">
       <form-biodata
         @formChanges="(n) => callback(form.id, n)"
@@ -292,6 +394,7 @@ function checkForms() {
     <button @click.prevent="checkForms()" type="submit">
       <i class="fa-solid fa-circle-check"></i>Selesai
     </button>
+    <div class="modal-container"></div>
   </main>
   <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
@@ -370,13 +473,13 @@ main {
         top: 0;
         right: 0;
         padding: 0 1em;
-        background-color: #CA82FF;
+        background-color: #ca82ff;
         cursor: pointer;
         pointer-events: none;
         transition: 0.25s all ease;
       }
       .select:hover::after {
-        color: #FBCB0A;
+        color: #fbcb0a;
       }
     }
   }
@@ -444,7 +547,26 @@ main {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
+  .modal-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    padding-top: 100px;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
 }
+
 footer {
   background-color: #354259;
   color: white;
