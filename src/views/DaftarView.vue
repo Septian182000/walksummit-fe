@@ -44,7 +44,7 @@ function checkForms() {
         display: flex;
         padding: 10px 20px;
       }
-      p {
+      .message-alert p {
         display: flex;
         color: red;
         padding: 10px;
@@ -123,13 +123,13 @@ function checkForms() {
           no_telp_orgtua: object.no_telp_orgtua,
           jenis_kelamin: object.jenis_kelamin,
         })
-        .then(function (response) {
-          console.log(response);
+        .then(function () {
+          showModal(idGrup);
         })
         .catch((error) => console.log(error));
       return data;
     });
-    showModal(idGrup);
+    
   };
   tambahPendaki();
 
