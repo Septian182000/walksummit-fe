@@ -84,26 +84,10 @@ function checkForms() {
 
   const tambahPendaki = async () => {
     const idGrup = await tambahGrup();
+    let inputForm = document.querySelectorAll("input");
+    let alertTambah = document.querySelector(".alert-tambah-pendaki");
     objectBiasa.forEach(async (object) => {
-      let inputForm = document.querySelectorAll("input");
-      let alertTambah = document.querySelector(".alert-tambah-pendaki");
-      if (inputForm.value) {
-        const data = await axios
-          .post(`http://127.0.0.1:8000/api/tambah-pelanggan`, {
-            grup_id: idGrup,
-            nik: object.nik,
-            nama: object.nama,
-            alamat: object.alamat,
-            no_telp: object.no_telp,
-            no_telp_orgtua: object.no_telp_orgtua,
-            jenis_kelamin: object.jenis_kelamin,
-          })
-          .then(function () {
-            console.log(idGrup);
-          })
-          .catch((error) => console.log(error));
-        return data;
-      } else {
+      if (!inputForm.value) {
         let tesValue = inputForm.forEach((form) => {
           let valueForm = form.value;
           if (!valueForm) {
@@ -129,6 +113,21 @@ function checkForms() {
           }
         });
       }
+      const data = await axios
+        .post(`http://127.0.0.1:8000/api/tambah-pelanggan`, {
+          grup_id: idGrup,
+          nik: object.nik,
+          nama: object.nama,
+          alamat: object.alamat,
+          no_telp: object.no_telp,
+          no_telp_orgtua: object.no_telp_orgtua,
+          jenis_kelamin: object.jenis_kelamin,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch((error) => console.log(error));
+      return data;
     });
     showModal(idGrup);
   };
@@ -138,7 +137,7 @@ function checkForms() {
     const containerModal = document.querySelector(".modal-container");
     containerModal.innerHTML = `
   <div class="message-modal">
-  <h2>MOHON SIMPAN ID GRUP</h2>
+  <h3>MOHON SIMPAN ID GRUP</h3>
   <p>UNTUK VERIFIKASI PEMBAYARAN</p>
   <p class="id-grup-modal">ID GRUP ANDA: ${idGrup}</p>
 
@@ -174,12 +173,12 @@ function checkForms() {
   }
   </style>
   `;
-  containerModal.style.display = 'flex';
+    containerModal.style.display = "flex";
 
-  containerModal.addEventListener("click", (event) => {
-  event.stopPropagation();
-  containerModal.style.display = 'none';
-});
+    containerModal.addEventListener("click", (event) => {
+      event.stopPropagation();
+      containerModal.style.display = "none";
+    });
   };
 }
 
@@ -547,7 +546,7 @@ main {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
-  .modal-container{
+  .modal-container {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -562,8 +561,8 @@ main {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
   }
 }
 
