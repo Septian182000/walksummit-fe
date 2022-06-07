@@ -103,7 +103,7 @@ form {
   border-radius: 10px;
   border: 2px solid black;
   background-color: white;
-  h2{
+  h2 {
     font-family: "Quicksand", sans-serif;
   }
   .input_style {
@@ -157,7 +157,7 @@ form {
   .radio-button {
     display: flex;
     gap: 10px;
-    input{
+    input {
       margin-right: 6px;
       margin-left: 6px;
     }

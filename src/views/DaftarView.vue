@@ -51,7 +51,6 @@ function checkForms() {
     nik: form.nik,
     alamat: form.alamat,
     nama: form.nama,
-    alamat: form.alamat,
     no_telp: form.noHp,
     no_telp_orgtua: form.noHpOrtu,
     jenis_kelamin: form.gender,

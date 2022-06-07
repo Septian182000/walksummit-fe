@@ -62,6 +62,7 @@ onMounted(() => {
     <div class="content">
     </div>
   </main>
+  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
@@ -69,6 +70,7 @@ onMounted(() => {
 main {
   margin-top: 84px;
   padding: 20px;
+  min-height: 100vh;
   h1 {
     text-align: center;
     font-family: "Quicksand", sans-serif;
@@ -76,6 +78,17 @@ main {
   .content {
     width: 70%;
     margin: 40px auto;
+  }
+}
+footer {
+  background-color: #354259;
+  color: white;
+  font-family: "Quicksand";
+  font-size: 16px;
+  padding: 16px;
+  text-align: center;
+  span {
+    color: red;
   }
 }
 @media only screen and (max-width: 600px) {
