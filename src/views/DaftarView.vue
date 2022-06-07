@@ -37,18 +37,20 @@ function checkForms() {
     if (!jalur || !berangkat || !pulang) {
       alertRequired.innerHTML = `
       <div class="message-alert">
-      <p>Semua Input Wajib diisi</p>
+      <p>* Semua Input Wajib diisi</p>
       </div>
       <style>
       .message-alert{
         display: flex;
-        padding: 10px 20px;
+        padding: 0px 20px 20px 20px;
       }
       p {
         display: flex;
         color: red;
         padding: 10px;
+        font-family: 'Quicksand';
         font-weight: bold;
+        font-style: italic;
         background-color: white;
         border-radius: 10px;
       }
@@ -93,22 +95,22 @@ function checkForms() {
           if (!valueForm) {
             alertTambah.innerHTML = `
           <div class="message-alert-tambah">
-      <p>Semua Input Wajib diisi</p>
-      </div>
-      <style>
-      .message-alert-tambah{
-        display: flex;
-        padding: 10px 20px;
-      }
-      .message-alert-tambah p {
-        display: flex;
-        color: white;
-        padding: 10px;
-        font-weight: bold;
-        background-color: red;
-        border-radius: 10px;
-      }
-      </style>
+            <p>Semua Input Wajib diisi</p>
+          </div>
+          <style>
+          .message-alert-tambah{
+            display: flex;
+            padding: 20px 20px 0px 20px;
+          }
+          .message-alert-tambah p {
+            display: flex;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            background-color: red;
+            border-radius: 10px;
+          }
+          </style>
           `;
           }
         });
@@ -486,7 +488,7 @@ main {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 15px;
-    margin: 30px 0;
+    margin: 15px 0 30px 0;
     border-radius: 20px;
     form {
       display: flex;

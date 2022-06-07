@@ -242,7 +242,16 @@ footer {
     color: red;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 600px) {
+  main {
+    width: 100%;
+    form{
+      width: 100%;
+    }
+    #hasil-search-container{
+      width: 90%;
+    }
+  }
 }
 @media only screen and (min-width: 1020px) {
   main {
