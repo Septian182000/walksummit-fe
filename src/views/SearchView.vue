@@ -16,7 +16,10 @@ function search(searchID) {
       .then(function (response) {
         return response;
       })
-      .catch((error) => console.log(error));
+      .catch(() => {
+        const listContainer = document.querySelector("#list-grup");
+        listContainer.innerHTML = `<p>Data Tidak Ditemukan</p>`;
+      });
     return data;
   };
 
@@ -25,11 +28,11 @@ function search(searchID) {
     console.log(responseJson.data);
     const id = responseJson.data.id;
     const nama = responseJson.data.koordinator;
-    const statusPembayaran = responseJson.data.status == 0 ? 'Belum Bayar' : 'Sudah Lunas';
+    const statusPembayaran =
+      responseJson.data.status == 0 ? "Belum Bayar" : "Sudah Lunas";
     const jalur = responseJson.data.jalur;
-    
     const listContainer = document.querySelector("#list-grup");
-    listContainer.innerHTML += `
+    listContainer.innerHTML = `
         <div id="info-grup">
           <p>Id Grup: ${id}</p>
           <p>Nama Koordinator: ${nama}</p>
@@ -134,11 +137,10 @@ function clearSearch() {
       <div id="list-grup"></div>
     </div>
   </main>
-  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap");
 
 main {
   min-height: 100vh;
@@ -148,7 +150,7 @@ main {
   margin-top: 80px;
   gap: 10px;
   h1 {
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Quicksand", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -161,7 +163,7 @@ main {
     flex-direction: column;
     gap: 10px;
     label {
-      font-family: 'Quicksand', sans-serif;
+      font-family: "Quicksand", sans-serif;
       font-size: 22px;
       font-weight: bold;
     }
@@ -169,7 +171,7 @@ main {
       padding: 10px;
       border-radius: 10px;
       height: 50px;
-      font-family: 'Quicksand', sans-serif;
+      font-family: "Quicksand", sans-serif;
       font-size: 20px;
       color: black;
     }
@@ -182,7 +184,7 @@ main {
       padding: 5px 20px;
       border-radius: 10px;
       font-weight: bold;
-      font-family: 'Quicksand', sans-serif;
+      font-family: "Quicksand", sans-serif;
     }
 
     .btn:hover {
@@ -212,9 +214,9 @@ main {
     width: 60%;
     margin: 30px auto;
     flex-direction: column;
-    gap: 20px;  
-    h2{
-      font-family: 'Quicksand', sans-serif;
+    gap: 20px;
+    h2 {
+      font-family: "Quicksand", sans-serif;
       text-align: center;
     }
     #list-grup {
@@ -228,24 +230,31 @@ main {
     }
   }
 }
-footer{
-  background-color: #354259;
-  color: white;
-  font-family: 'Quicksand';
-  font-size: 16px;
-  padding: 16px;
-  text-align: center;
-  span{
-    color: red;
+@media only screen and (max-width: 600px) {
+  main {
+    width: 100%;
+    form{
+      width: 100%;
+    }
+    #hasil-search-container{
+      width: 90%;
+    }
   }
-}
-@media only screen and (min-width: 768px) {
 }
 @media only screen and (min-width: 1020px) {
   main {
     margin-top: 70px;
+    h1 {
+      font-size: 25px;
+    }
   }
 }
 @media only screen and (min-width: 1200px) {
+  main {
+    margin-top: 70px;
+    h1 {
+      font-size: 30px;
+    }
+  }
 }
 </style>

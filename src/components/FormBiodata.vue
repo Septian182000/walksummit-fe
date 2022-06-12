@@ -33,6 +33,7 @@ const form = reactive({
         placeholder=" "
         v-model="form.nama"
         @input="$emit('formChanges', form)"
+        required
       />
       <label for="" class="input_style__label">Nama</label>
     </div>
@@ -43,6 +44,7 @@ const form = reactive({
         placeholder=" "
         v-model="form.alamat"
         @input="$emit('formChanges', form)"
+        required
       />
       <label for="" class="input_style__label">Alamat</label>
     </div>
@@ -53,6 +55,7 @@ const form = reactive({
         placeholder=" "
         v-model="form.noHp"
         @input="$emit('formChanges', form)"
+        required
       />
       <label for="" class="input_style__label">No.Hp</label>
     </div>
@@ -63,6 +66,7 @@ const form = reactive({
         placeholder=" "
         v-model="form.noHpOrtu"
         @input="$emit('formChanges', form)"
+        required
       />
       <label for="" class="input_style__label">No.Kerabat</label>
     </div>
@@ -76,6 +80,7 @@ const form = reactive({
           id="pria"
           v-model="form.gender"
           @input="$emit('formChanges', form)"
+          required
         />
         <label for="">Pria</label>
       </div>
@@ -88,6 +93,7 @@ const form = reactive({
           id="wanita"
           v-model="form.gender"
           @input="$emit('formChanges', form)"
+          required
         />
         <label for="">Wanita</label>
       </div>
@@ -103,7 +109,7 @@ form {
   border-radius: 10px;
   border: 2px solid black;
   background-color: white;
-  h2{
+  h2 {
     font-family: "Quicksand", sans-serif;
   }
   .input_style {
@@ -157,7 +163,7 @@ form {
   .radio-button {
     display: flex;
     gap: 10px;
-    input{
+    input {
       margin-right: 6px;
       margin-left: 6px;
     }

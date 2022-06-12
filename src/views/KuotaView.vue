@@ -69,6 +69,7 @@ onMounted(() => {
 main {
   margin-top: 84px;
   padding: 20px;
+  min-height: 100vh;
   h1 {
     text-align: center;
     font-family: "Quicksand", sans-serif;
@@ -81,9 +82,6 @@ main {
 @media only screen and (max-width: 600px) {
   main {
     .header {
-      h1 {
-        font-size: 25px;
-      }
       hr {
         width: 80%;
       }
@@ -96,6 +94,20 @@ main {
       h3 {
         font-size: 16px;
       }
+    }
+  }
+}
+@media only screen and (min-width: 1024px) {
+  main {
+    h1 {
+      font-size: 25px;
+    }
+  }
+}
+@media only screen and (min-width: 1200px) {
+  main {
+    h1 {
+      font-size: 30px;
     }
   }
 }

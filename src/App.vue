@@ -184,7 +184,6 @@ header {
     left: 0;
   }
 }
-
 @media only screen and (min-width: 1024px) {
   header {
     width: 100%;

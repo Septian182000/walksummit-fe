@@ -33,17 +33,42 @@ function checkForms() {
   let pulang = document.querySelector(".input-pulang").value;
 
   const tambahGrup = async () => {
-    const data = await axios
-      .post(`http://127.0.0.1:8000/api/tambah-grup`, {
-        jalur_id: jalur,
-        tgl_brangkat: berangkat,
-        tgl_pulang: pulang,
-      })
-      .then(function (response) {
-        return response.data.data.id;
-      })
-      .catch((error) => console.log(error));
-    return data;
+    let alertRequired = document.querySelector(".alert-required");
+    if (!jalur || !berangkat || !pulang) {
+      alertRequired.innerHTML = `
+      <div class="message-alert">
+      <p>* Semua Input Wajib diisi</p>
+      </div>
+      <style>
+      .message-alert{
+        display: flex;
+        padding: 0px 20px 20px 20px;
+      }
+      .message-alert p {
+        display: flex;
+        color: red;
+        padding: 10px;
+        font-family: 'Quicksand';
+        font-weight: bold;
+        font-style: italic;
+        background-color: white;
+        border-radius: 10px;
+      }
+      </style>
+      `;
+    } else {
+      const data = await axios
+        .post(`http://127.0.0.1:8000/api/tambah-grup`, {
+          jalur_id: jalur,
+          tgl_brangkat: berangkat,
+          tgl_pulang: pulang,
+        })
+        .then(function (response) {
+          return response.data.data.id;
+        })
+        .catch((error) => console.log(error));
+      return data;
+    }
   };
   tambahGrup();
 
@@ -51,22 +76,45 @@ function checkForms() {
     nik: form.nik,
     alamat: form.alamat,
     nama: form.nama,
-    alamat: form.alamat,
     no_telp: form.noHp,
     no_telp_orgtua: form.noHpOrtu,
     jenis_kelamin: form.gender,
   }));
-
-  // const formYangAkanDiSubmit = {
-  //   anggota: anggota,
-  // }
 
   const stringJSON = JSON.stringify(anggota);
   const objectBiasa = JSON.parse(stringJSON);
 
   const tambahPendaki = async () => {
     const idGrup = await tambahGrup();
+    let inputForm = document.querySelectorAll("input");
+    let alertTambah = document.querySelector(".alert-tambah-pendaki");
     objectBiasa.forEach(async (object) => {
+      if (!inputForm.value) {
+        let tesValue = inputForm.forEach((form) => {
+          let valueForm = form.value;
+          if (!valueForm) {
+            alertTambah.innerHTML = `
+          <div class="message-alert-tambah">
+            <p>Semua Input Wajib diisi</p>
+          </div>
+          <style>
+          .message-alert-tambah{
+            display: flex;
+            padding: 20px 20px 0px 20px;
+          }
+          .message-alert-tambah p {
+            display: flex;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            background-color: red;
+            border-radius: 10px;
+          }
+          </style>
+          `;
+          }
+        });
+      }
       const data = await axios
         .post(`http://127.0.0.1:8000/api/tambah-pelanggan`, {
           grup_id: idGrup,
@@ -77,15 +125,337 @@ function checkForms() {
           no_telp_orgtua: object.no_telp_orgtua,
           jenis_kelamin: object.jenis_kelamin,
         })
-        .then(function (response) {
-          console.log(response);
+        .then(function () {
+          showModal(idGrup);
         })
         .catch((error) => console.log(error));
       return data;
     });
   };
   tambahPendaki();
+
+  const showModal = (idGrup) => {
+    const containerModal = document.querySelector(".modal-container");
+    containerModal.innerHTML = `
+    <div class="message-modal">
+      <h1><i class="fa-solid fa-triangle-exclamation"></i>Peringatan Walkers</h1>
+      <h2>SIMPAN ID GRUP ANDA UNTUK</h2>
+      <h3>"VERIFIKASI PEMBAYARAN"</h3>
+      <p class="id-grup-modal">ID GRUP ANDA</p>
+      <p class="id-grup">${idGrup}</p>
+    <div class="tutup-modal">
+        <p>Tutup</p>
+    </div>
+    <div class="note">
+        <p>* Harap menghubungi kontak yang tersedia</p>
+    </div>
+    </div>
+    <style>
+    .modal-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      z-index: 1; /* Sit on top */
+      padding-top: 100px;
+      display: none;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    .message-modal {
+      width: 45%;
+      background-color: #DAEAF1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      padding: 15px;
+      gap: 5px;
+      border: 1px solid #888;
+    }
+    .fa-solid{
+      margin-right: 10px;
+    }
+    .message-modal h1 {
+      font-family: "Quicksand", sans-serif;
+      font-size: 50px;
+      color: red;
+      margin-bottom: 20px;
+    }
+    .message-modal h2 {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 800;
+    }
+    .message-modal h3 {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .message-modal p {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 800;
+    }
+    .message-modal .id-grup-modal {
+      font-size: 24px;
+    }
+    .message-modal .id-grup {
+      font-size: 80px;
+      margin-bottom: 10px;
+    }
+    .tutup-modal {
+      background-color: white;
+      font-weight: bold;
+      text-align: center;
+      color: black;
+      padding: 10px;
+      width: 100px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+    .tutup-modal:hover {
+      background-color: red;
+      cursor: pointer;
+      color: white;
+    }
+    .message-modal .note{
+      font-style: italic;
+    }
+    @media only screen and (max-width: 729px) {
+      .message-modal{
+        width: 85%;
+      }
+      .message-modal h1 {
+        font-size: 30px;
+      }
+      .message-modal h2 {
+        font-size: 18px;
+      }
+      .message-modal h3 {
+        font-size: 18px;
+      }
+    }
+    @media only screen and (min-width: 730px) {
+      .message-modal{
+        width: 70%;
+      }
+      .message-modal h1 {
+        font-size: 40px;
+      }
+      .message-modal h2 {
+        font-size: 18px;
+      }
+      .message-modal h3 {
+        font-size: 18px;
+      }
+    }
+    @media only screen and (min-width: 900px) {
+      .message-modal{
+        width: 60%;
+      }
+      .message-modal h1 {
+        font-size: 50px;
+      }
+      .message-modal h2 {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 800;
+        font-size: 25px;
+      }
+      .message-modal h3 {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+    }
+    @media only screen and (min-width: 1024px) {
+      .message-modal{
+        width: 60%;
+      }
+    }
+    @media only screen and (min-width: 1440px) {
+      .message-modal{
+        width: 45%;
+      }
+    }
+    </style>
+    `;
+    containerModal.style.display = "flex";
+
+    containerModal.addEventListener("click", (event) => {
+      event.stopPropagation();
+      containerModal.style.display = "none";
+    });
+  };
 }
+
+// const showModal = (idGrup) => {
+//   const containerModal = document.querySelector(".modal-container");
+//   containerModal.innerHTML = `
+//     <div class="message-modal">
+//       <h1><i class="fa-solid fa-triangle-exclamation"></i>Peringatan Walkers</h1>
+//       <h2>SIMPAN ID GRUP ANDA UNTUK</h2>
+//       <h3>"VERIFIKASI PEMBAYARAN"</h3>
+//       <p class="id-grup-modal">ID GRUP ANDA</p>
+//       <p class="id-grup">1265</p>
+//     <div class="tutup-modal">
+//         <p>Tutup</p>
+//     </div>
+//     <div class="note">
+//         <p>* Harap menghubungi kontak yang tersedia</p>
+//     </div>
+//     </div>
+//     <style>
+//     .modal-container {
+//       display: flex;
+//       flex-direction: column;
+//       gap: 5px;
+//       justify-content: center;
+//       align-items: center;
+//       position: fixed;
+//       z-index: 1; /* Sit on top */
+//       padding-top: 100px;
+//       display: none;
+//       left: 0;
+//       top: 0;
+//       width: 100%;
+//       height: 100%;
+//       overflow: auto;
+//       background-color: rgb(0, 0, 0);
+//       background-color: rgba(0, 0, 0, 0.4);
+//     }
+//     .message-modal {
+//       width: 45%;
+//       background-color: #DAEAF1;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+//       border-radius: 20px;
+//       padding: 15px;
+//       gap: 5px;
+//       border: 1px solid #888;
+//     }
+//     .fa-solid{
+//       margin-right: 10px;
+//     }
+//     .message-modal h1 {
+//       font-family: "Quicksand", sans-serif;
+//       font-size: 50px;
+//       color: red;
+//       margin-bottom: 20px;
+//     }
+//     .message-modal h2 {
+//       font-family: "Quicksand", sans-serif;
+//       font-weight: 800;
+//     }
+//     .message-modal h3 {
+//       font-family: "Quicksand", sans-serif;
+//       font-weight: 800;
+//       margin-bottom: 20px;
+//     }
+//     .message-modal p {
+//       font-family: "Quicksand", sans-serif;
+//       font-weight: 800;
+//     }
+//     .message-modal .id-grup-modal {
+//       font-size: 24px;
+//     }
+//     .message-modal .id-grup {
+//       font-size: 80px;
+//       margin-bottom: 10px;
+//     }
+//     .tutup-modal {
+//       background-color: white;
+//       font-weight: bold;
+//       text-align: center;
+//       color: black;
+//       padding: 10px;
+//       width: 100px;
+//       margin-bottom: 20px;
+//       border-radius: 10px;
+//     }
+//     .tutup-modal:hover {
+//       background-color: red;
+//       cursor: pointer;
+//       color: white;
+//     }
+//     .message-modal .note{
+//       font-style: italic;
+//     }
+//     @media only screen and (max-width: 729px) {
+//       .message-modal{
+//         width: 85%;
+//       }
+//       .message-modal h1 {
+//         font-size: 30px;
+//       }
+//       .message-modal h2 {
+//         font-size: 18px;
+//       }
+//       .message-modal h3 {
+//         font-size: 18px;
+//       }
+//     }
+//     @media only screen and (min-width: 730px) {
+//       .message-modal{
+//         width: 70%;
+//       }
+//       .message-modal h1 {
+//         font-size: 40px;
+//       }
+//       .message-modal h2 {
+//         font-size: 18px;
+//       }
+//       .message-modal h3 {
+//         font-size: 18px;
+//       }
+//     }
+//     @media only screen and (min-width: 900px) {
+//       .message-modal{
+//         width: 60%;
+//       }
+//       .message-modal h1 {
+//         font-size: 50px;
+//       }
+//       .message-modal h2 {
+//         font-family: "Quicksand", sans-serif;
+//         font-weight: 800;
+//         font-size: 25px;
+//       }
+//       .message-modal h3 {
+//         font-family: "Quicksand", sans-serif;
+//         font-weight: 800;
+//         font-size: 20px;
+//         margin-bottom: 20px;
+//       }
+//     }
+//     @media only screen and (min-width: 1024px) {
+//       .message-modal{
+//         width: 60%;
+//       }
+//     }
+//     @media only screen and (min-width: 1440px) {
+//       .message-modal{
+//         width: 45%;
+//       }
+//     }
+//     </style>
+//     `;
+//   containerModal.style.display = "flex";
+
+//   containerModal.addEventListener("click", (event) => {
+//     event.stopPropagation();
+//     containerModal.style.display = "none";
+//   });
+// };
 
 // function addForm() {
 //   const tambahButton = document.querySelector('.add-button');
@@ -252,6 +622,7 @@ function checkForms() {
           class="input-berangkat"
           type="date"
           v-model="formsPendakian.berangkat"
+          required
         />
         {{ berangkat }}
         <label for="">Tanggal Pulang</label>
@@ -259,6 +630,7 @@ function checkForms() {
           class="input-pulang"
           type="date"
           v-model="formsPendakian.pulang"
+          required
         />
         {{ pulang }}
         <label for="">Pilih Jalur</label>
@@ -268,6 +640,7 @@ function checkForms() {
             name="jalur"
             id="jalur"
             v-model="formsPendakian.jalur"
+            required
           >
             <option value="1">jalur1</option>
             <option value="2">jalur2</option>
@@ -278,11 +651,13 @@ function checkForms() {
         </div>
         {{ jalur }}
       </form>
+      <div class="alert-required"></div>
     </div>
     <h2>Informasi Pendaki</h2>
     <button class="add-button" @click="addForm">
       <i class="fa-solid fa-user-plus"></i>Pendaki
     </button>
+    <div class="alert-tambah-pendaki"></div>
     <div class="biodata-container">
       <form-biodata
         @formChanges="(n) => callback(form.id, n)"
@@ -293,8 +668,8 @@ function checkForms() {
     <button @click.prevent="checkForms()" type="submit">
       <i class="fa-solid fa-circle-check"></i>Selesai
     </button>
+    <div class="modal-container"></div>
   </main>
-  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
@@ -371,13 +746,13 @@ main {
         top: 0;
         right: 0;
         padding: 0 1em;
-        background-color: #CA82FF;
+        background-color: #ca82ff;
         cursor: pointer;
         pointer-events: none;
         transition: 0.25s all ease;
       }
       .select:hover::after {
-        color: #FBCB0A;
+        color: #fbcb0a;
       }
     }
   }
@@ -385,7 +760,7 @@ main {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 15px;
-    margin: 30px 0;
+    margin: 15px 0 30px 0;
     border-radius: 20px;
     form {
       display: flex;
@@ -444,17 +819,6 @@ main {
   button:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
-}
-footer {
-  background-color: #354259;
-  color: white;
-  font-family: "Quicksand";
-  font-size: 16px;
-  padding: 16px;
-  text-align: center;
-  span {
-    color: red;
   }
 }
 @media only screen and (max-width: 600px) {
