@@ -105,7 +105,7 @@
           <h1>7</h1>
           <picture>
             <source />
-            <img src="../../public/images/alur/alur-8.png" alt="" />
+            <img src="../../public/images/alur/alur-7.png" alt="" />
           </picture>
           <p>Setelah itu hubungi kontak yang tersedia untuk verifikasi</p>
         </div>
@@ -145,11 +145,24 @@
     </section>
     <section id="contact">
       <h2>Contact Us</h2>
+      <hr>
       <div class="list">
-        <p><i class="fa-solid fa-phone"></i>(+62) 83434342</p>
-        <p><i class="fa-solid fa-phone"></i>(+62) 83434342</p>
-        <p><i class="fa-solid fa-phone"></i>(+62) 83434342</p>
-        <p><i class="fa-solid fa-phone"></i>(+62) 83434342</p>
+        <div class="box">
+          <h1><i class="fa-solid fa-face-grin-wink"></i></h1>
+          <p>(+62) 83434342</p>
+        </div>
+        <div class="box">
+          <h1><i class="fa-solid fa-face-grin-wink"></i></h1>
+          <p>(+62) 83434342</p>
+        </div>
+        <div class="box">
+          <h1><i class="fa-solid fa-face-grin-wink"></i></h1>
+          <p>(+62) 83434342</p>
+        </div>
+        <div class="box">
+          <h1><i class="fa-solid fa-face-grin-wink"></i></h1>
+          <p>(+62) 83434342</p>
+        </div>
       </div>
     </section>
   </main>
@@ -395,15 +408,21 @@ main {
     }
     .list {
       display: grid;
-      grid-template-columns: 1fr;
-      .fa-solid {
-        margin-right: 8px;
-      }
-      p {
-        font-family: "Quicksand";
-        font-weight: 800;
-        font-size: 20px;
-        margin-bottom: 10px;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 16px;
+      .box{
+        margin: 0 40px;
+        text-align: center;
+        h1{
+          font-size: 50px;
+          margin-bottom: 13px;
+        }
+        p {
+          font-family: "Quicksand";
+          font-weight: 800;
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
       }
     }
   }
@@ -449,6 +468,24 @@ main {
         margin: 10px 0;
       }
     }
+    #contact {
+      width: 90%;
+      h2 {
+        font-size: 20px;
+      }
+      .list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        .box {
+          h1 {
+            font-size: 40px;
+          }
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -459,6 +496,38 @@ main {
         height: 300px;
         h1 {
           font-size: 35px;
+        }
+      }
+    }
+    #informasi-gunung {
+      .informasi-detail-gunung {
+        width: 90%;
+        iframe {
+          width: 100%;
+          height: 250px;
+        }
+      }
+      .informasi-pendaki-gunung {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+    #contact {
+      width: 90%;
+      h2 {
+        font-size: 30px;
+      }
+      .list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        .box {
+          h1 {
+            font-size: 40px;
+          }
+          p {
+            font-size: 15px;
+          }
         }
       }
     }
@@ -508,6 +577,24 @@ main {
         grid-template-columns: repeat(1, 1fr);
       }
     }
+    #contact {
+      width: 90%;
+      h2 {
+        font-size: 30px;
+      }
+      .list {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        .box {
+          h1 {
+            font-size: 40px;
+          }
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -533,7 +620,7 @@ main {
         }
         iframe {
           width: 100%;
-          height: 300px;
+          height: 350px;
         }
       }
       .informasi-pendaki-gunung {
@@ -628,6 +715,21 @@ main {
       h2 {
         font-size: 30px;
       }
+      hr {
+        height: 6px;
+        background-color: #354259;
+      }
+      .list {
+        margin-top: 20px;
+        .box{
+          h1 {
+            font-size: 50px;
+          }
+          p {
+            font-size: 20px;
+          }
+        }
+      }
     }
   }
 }
@@ -702,14 +804,36 @@ main {
         }
       }
       .container {
-        width: 300px;
+        width: 350px;
         padding: 20px;
-        font-size: 20px;
+        font-size: 30px;
       }
     }
     #galeri-gunung {
+      width: 80%;
       h2 {
         font-size: 50px;
+      }
+    }
+    #contact {
+      width: 80%;
+      h2 {
+        font-size: 50px;
+      }
+      hr {
+        height: 6px;
+        background-color: #354259;
+      }
+      .list {
+        margin-top: 20px;
+        .box{
+          h1 {
+            font-size: 70px;
+          }
+          p {
+            font-size: 30px;
+          }
+        }
       }
     }
   }

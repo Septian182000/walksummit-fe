@@ -244,8 +244,17 @@ main {
 @media only screen and (min-width: 1020px) {
   main {
     margin-top: 70px;
+    h1 {
+      font-size: 25px;
+    }
   }
 }
 @media only screen and (min-width: 1200px) {
+  main {
+    margin-top: 70px;
+    h1 {
+      font-size: 30px;
+    }
+  }
 }
 </style>

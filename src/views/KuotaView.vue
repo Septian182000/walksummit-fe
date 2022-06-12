@@ -97,4 +97,18 @@ main {
     }
   }
 }
+@media only screen and (min-width: 1024px) {
+  main {
+    h1 {
+      font-size: 25px;
+    }
+  }
+}
+@media only screen and (min-width: 1200px) {
+  main {
+    h1 {
+      font-size: 30px;
+    }
+  }
+}
 </style>

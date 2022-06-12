@@ -120,6 +120,9 @@ main{
 @media only screen and (min-width: 1024px) {
   main {
     .header {
+      h1 {
+        font-size: 25px;
+      }
       hr {
         width: 80%;
       }
@@ -145,6 +148,9 @@ main{
 @media only screen and (min-width: 1200px) {
   main {
     .header {
+      h1 {
+        font-size: 30px;
+      }
       hr {
         width: 80%;
       }
