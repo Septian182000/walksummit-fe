@@ -9,7 +9,7 @@
     </div>
     <div class="content">
       <div class="card peraturan">
-        <h2>Peraturan</h2>
+        <h2 class="title">Peraturan</h2>
         <ol class="list-peraturan">
           <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>Tenda (Min 2 kapasitas)</h3></li>
           <li><h3><i class="fa-solid fa-circle-exclamation rules"></i>P3K</h3></li>
@@ -29,8 +29,8 @@
         </ol>
       </div>
       <div class="card larangan">
-        <h2>Larangan</h2>
-        <h3>
+        <h2 class="title">Larangan</h2>
+        <h3 class="subject">
           Seperti halnya tempat wiasata yang lain, tempat wisata ini pun juga
           memiliki aturan yang sangat ketat, dan wajib di taati, seperti:
         </h3>
@@ -51,7 +51,6 @@
       </div>
     </div>
   </main>
-  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
@@ -73,7 +72,6 @@ main{
     }
   }
   .content{
-    width: 70%;
     margin: 40px auto;
     .card{
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -104,18 +102,6 @@ main{
     }
   }
 }
-footer{
-  background-color: #354259;
-  color: white;
-  font-family: 'Quicksand';
-  font-size: 16px;
-  padding: 16px;
-  text-align: center;
-  span{
-    color: red;
-  }
-}
-
 @media only screen and (max-width: 600px) {
   main {
     .header {
@@ -128,6 +114,56 @@ footer{
     }
     .content{
       width: 100%;
+    }
+  }
+}
+@media only screen and (min-width: 1024px) {
+  main {
+    .header {
+      hr {
+        width: 80%;
+      }
+    }
+    .content{
+      width: 70%;
+      .card {
+        .title {
+          font-size: 16px;
+        }
+        .subject {
+          font-size: 13px;
+        }
+        .list-peraturan, .list-larangan{
+          li {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1200px) {
+  main {
+    .header {
+      hr {
+        width: 80%;
+      }
+    }
+    .content{
+      width: 70%;
+      .card {
+        .title {
+          font-size: 25px;
+        }
+        .subject {
+          font-size: 20px;
+        }
+        .list-peraturan, .list-larangan{
+          li {
+            font-size: 16px;
+          }
+        }
+      }
     }
   }
 }

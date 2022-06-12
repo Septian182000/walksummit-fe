@@ -131,50 +131,162 @@ function checkForms() {
         .catch((error) => console.log(error));
       return data;
     });
-    
   };
   tambahPendaki();
 
   const showModal = (idGrup) => {
     const containerModal = document.querySelector(".modal-container");
     containerModal.innerHTML = `
-  <div class="message-modal">
-  <h3>MOHON SIMPAN ID GRUP</h3>
-  <p>UNTUK VERIFIKASI PEMBAYARAN</p>
-  <p class="id-grup-modal">ID GRUP ANDA: ${idGrup}</p>
-
-  <div class="tutup-modal">
-  <p>Tutup</p>
-  </div>
-  </div>
-  
-  <style>
-  .message-modal {
-    background-color: #F2EBE9;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
-    gap: 5px;
-    border: 1px solid #888;
-  }
-  .message-modal .id-grup-modal{
-    font-size: 24px;
-  }
-  .tutup-modal{
-    background-color: red;
-    font-weight: bold;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-  }
-  .tutup-modal:hover{
-    cursor: pointer;
-  }
-  </style>
-  `;
+    <div class="message-modal">
+      <h1><i class="fa-solid fa-triangle-exclamation"></i>Peringatan Walkers</h1>
+      <h2>SIMPAN ID GRUP ANDA UNTUK</h2>
+      <h3>"VERIFIKASI PEMBAYARAN"</h3>
+      <p class="id-grup-modal">ID GRUP ANDA</p>
+      <p class="id-grup">${idGrup}</p>
+    <div class="tutup-modal">
+        <p>Tutup</p>
+    </div>
+    <div class="note">
+        <p>* Harap menghubungi kontak yang tersedia</p>
+    </div>
+    </div>
+    <style>
+    .modal-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      z-index: 1; /* Sit on top */
+      padding-top: 100px;
+      display: none;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    .message-modal {
+      width: 45%;
+      background-color: #DAEAF1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      padding: 15px;
+      gap: 5px;
+      border: 1px solid #888;
+    }
+    .fa-solid{
+      margin-right: 10px;
+    }
+    .message-modal h1 {
+      font-family: "Quicksand", sans-serif;
+      font-size: 50px;
+      color: red;
+      margin-bottom: 20px;
+    }
+    .message-modal h2 {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 800;
+    }
+    .message-modal h3 {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .message-modal p {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 800;
+    }
+    .message-modal .id-grup-modal {
+      font-size: 24px;
+    }
+    .message-modal .id-grup {
+      font-size: 80px;
+      margin-bottom: 10px;
+    }
+    .tutup-modal {
+      background-color: white;
+      font-weight: bold;
+      text-align: center;
+      color: black;
+      padding: 10px;
+      width: 100px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+    .tutup-modal:hover {
+      background-color: red;
+      cursor: pointer;
+      color: white;
+    }
+    .message-modal .note{
+      font-style: italic;
+    }
+    @media only screen and (max-width: 729px) {
+      .message-modal{
+        width: 85%;
+      }
+      .message-modal h1 {
+        font-size: 30px;
+      }
+      .message-modal h2 {
+        font-size: 18px;
+      }
+      .message-modal h3 {
+        font-size: 18px;
+      }
+    }
+    @media only screen and (min-width: 730px) {
+      .message-modal{
+        width: 70%;
+      }
+      .message-modal h1 {
+        font-size: 40px;
+      }
+      .message-modal h2 {
+        font-size: 18px;
+      }
+      .message-modal h3 {
+        font-size: 18px;
+      }
+    }
+    @media only screen and (min-width: 900px) {
+      .message-modal{
+        width: 60%;
+      }
+      .message-modal h1 {
+        font-size: 50px;
+      }
+      .message-modal h2 {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 800;
+        font-size: 25px;
+      }
+      .message-modal h3 {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+    }
+    @media only screen and (min-width: 1024px) {
+      .message-modal{
+        width: 60%;
+      }
+    }
+    @media only screen and (min-width: 1440px) {
+      .message-modal{
+        width: 45%;
+      }
+    }
+    </style>
+    `;
     containerModal.style.display = "flex";
 
     containerModal.addEventListener("click", (event) => {
@@ -183,6 +295,167 @@ function checkForms() {
     });
   };
 }
+
+// const showModal = (idGrup) => {
+//   const containerModal = document.querySelector(".modal-container");
+//   containerModal.innerHTML = `
+//     <div class="message-modal">
+//       <h1><i class="fa-solid fa-triangle-exclamation"></i>Peringatan Walkers</h1>
+//       <h2>SIMPAN ID GRUP ANDA UNTUK</h2>
+//       <h3>"VERIFIKASI PEMBAYARAN"</h3>
+//       <p class="id-grup-modal">ID GRUP ANDA</p>
+//       <p class="id-grup">1265</p>
+//     <div class="tutup-modal">
+//         <p>Tutup</p>
+//     </div>
+//     <div class="note">
+//         <p>* Harap menghubungi kontak yang tersedia</p>
+//     </div>
+//     </div>
+//     <style>
+//     .modal-container {
+//       display: flex;
+//       flex-direction: column;
+//       gap: 5px;
+//       justify-content: center;
+//       align-items: center;
+//       position: fixed;
+//       z-index: 1; /* Sit on top */
+//       padding-top: 100px;
+//       display: none;
+//       left: 0;
+//       top: 0;
+//       width: 100%;
+//       height: 100%;
+//       overflow: auto;
+//       background-color: rgb(0, 0, 0);
+//       background-color: rgba(0, 0, 0, 0.4);
+//     }
+//     .message-modal {
+//       width: 45%;
+//       background-color: #DAEAF1;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+//       border-radius: 20px;
+//       padding: 15px;
+//       gap: 5px;
+//       border: 1px solid #888;
+//     }
+//     .fa-solid{
+//       margin-right: 10px;
+//     }
+//     .message-modal h1 {
+//       font-family: "Quicksand", sans-serif;
+//       font-size: 50px;
+//       color: red;
+//       margin-bottom: 20px;
+//     }
+//     .message-modal h2 {
+//       font-family: "Quicksand", sans-serif;
+//       font-weight: 800;
+//     }
+//     .message-modal h3 {
+//       font-family: "Quicksand", sans-serif;
+//       font-weight: 800;
+//       margin-bottom: 20px;
+//     }
+//     .message-modal p {
+//       font-family: "Quicksand", sans-serif;
+//       font-weight: 800;
+//     }
+//     .message-modal .id-grup-modal {
+//       font-size: 24px;
+//     }
+//     .message-modal .id-grup {
+//       font-size: 80px;
+//       margin-bottom: 10px;
+//     }
+//     .tutup-modal {
+//       background-color: white;
+//       font-weight: bold;
+//       text-align: center;
+//       color: black;
+//       padding: 10px;
+//       width: 100px;
+//       margin-bottom: 20px;
+//       border-radius: 10px;
+//     }
+//     .tutup-modal:hover {
+//       background-color: red;
+//       cursor: pointer;
+//       color: white;
+//     }
+//     .message-modal .note{
+//       font-style: italic;
+//     }
+//     @media only screen and (max-width: 729px) {
+//       .message-modal{
+//         width: 85%;
+//       }
+//       .message-modal h1 {
+//         font-size: 30px;
+//       }
+//       .message-modal h2 {
+//         font-size: 18px;
+//       }
+//       .message-modal h3 {
+//         font-size: 18px;
+//       }
+//     }
+//     @media only screen and (min-width: 730px) {
+//       .message-modal{
+//         width: 70%;
+//       }
+//       .message-modal h1 {
+//         font-size: 40px;
+//       }
+//       .message-modal h2 {
+//         font-size: 18px;
+//       }
+//       .message-modal h3 {
+//         font-size: 18px;
+//       }
+//     }
+//     @media only screen and (min-width: 900px) {
+//       .message-modal{
+//         width: 60%;
+//       }
+//       .message-modal h1 {
+//         font-size: 50px;
+//       }
+//       .message-modal h2 {
+//         font-family: "Quicksand", sans-serif;
+//         font-weight: 800;
+//         font-size: 25px;
+//       }
+//       .message-modal h3 {
+//         font-family: "Quicksand", sans-serif;
+//         font-weight: 800;
+//         font-size: 20px;
+//         margin-bottom: 20px;
+//       }
+//     }
+//     @media only screen and (min-width: 1024px) {
+//       .message-modal{
+//         width: 60%;
+//       }
+//     }
+//     @media only screen and (min-width: 1440px) {
+//       .message-modal{
+//         width: 45%;
+//       }
+//     }
+//     </style>
+//     `;
+//   containerModal.style.display = "flex";
+
+//   containerModal.addEventListener("click", (event) => {
+//     event.stopPropagation();
+//     containerModal.style.display = "none";
+//   });
+// };
 
 // function addForm() {
 //   const tambahButton = document.querySelector('.add-button');
@@ -397,7 +670,6 @@ function checkForms() {
     </button>
     <div class="modal-container"></div>
   </main>
-  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
@@ -547,36 +819,6 @@ main {
   button:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
-  .modal-container {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    z-index: 1; /* Sit on top */
-    padding-top: 100px;
-    display: none;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-}
-
-footer {
-  background-color: #354259;
-  color: white;
-  font-family: "Quicksand";
-  font-size: 16px;
-  padding: 16px;
-  text-align: center;
-  span {
-    color: red;
   }
 }
 @media only screen and (max-width: 600px) {

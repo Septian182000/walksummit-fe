@@ -3,40 +3,44 @@
 <template>
   <main>
     <section id="hero">
-      <picture>
-        <source />
-        <img srcset="../../public/images/gunungsindoro.jpg" alt="" />
-      </picture>
       <div class="welcome">
-        <h2>Selamat datang di gunung Sindoro</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel
-          arcu sed urna feugiat ultrices. Sed feugiat pulvinar nulla id mattis.
-          Nam sed metus at leo ultricies tincidunt. Vestibulum ante ipsum primis
-          in faucibus orci luctus et ultrices posuere cubilia curae; Mauris
-          ipsum risus, placerat vitae dolor ac, ullamcorper hendrerit sem. Fusce
-          quis dolor in dui accumsan congue. Praesent a laoreet mauris.
-        </p>
+        <h1>Selamat datang di gunung Sindoro</h1>
       </div>
     </section>
     <section id="informasi-gunung">
       <h2>Informasi Gunung Sindoro</h2>
       <div class="informasi-detail-gunung">
-        <p>Ketinggian Gunung: 3.153 mdpl</p>
-        <p>Koordinat Lokasi Gunung: 7.3010463°S 109.9968767°E</p>
-        <p>Jenis Gunung: Semi Aktif</p>
-        <p>Rute Normal Pendakian: Kledung</p>
-        <p>Lokasi: Desa Katekan, Kecamatan Ngadirejo</p>
-        <p>Wilayah: Kabupaten Temanggung, dan Kabupaten Wonosobo.</p>
+        <p><i class="fa-solid fa-mountain"></i>3.153 mdpl</p>
+        <p><i class="fa-solid fa-volcano"></i>Semi Aktif</p>
+        <p><i class="fa-solid fa-money-bill-wave"></i>Rp.25,000 (Tiap Jalur)</p>
+        <p><i class="fa-solid fa-road"></i>Kledung (via favorite)</p>
+        <p><i class="fa-solid fa-compass"></i>7.3010463°S 109.9968767°E</p>
+        <p><i class="fa-solid fa-location-dot"></i>Desa Katekan,KecamatanNgadirejo</p>
+        <p><i class="fa-solid fa-map"></i>Kabupaten Temanggung, danKabupatenWonosobo.</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31659.65199144163!2d109.97832366852224!3d-7.302499512684031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70757555351a43%3A0x6e1fd0eaed14acb5!2sGn.%20Sindoro!5e0!3m2!1sid!2sid!4v1654936415761!5m2!1sid!2sid"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
       <h2>Informasi Pendaki Gunung Sindoro</h2>
       <div class="informasi-pendaki-gunung">
-        <p>Jumlah Pendaki Saat Ini: 30 Orang</p>
-        <p>Kuota Pendakian Tersisa: 20 Orang</p>
-        <p>Batas Maksimal Pendaki / Hari: 50 Orang</p>
-      </div>
-      <div class="container">
-        <a class="daftar" href="/daftar">Ingin daftar mendaki gunung ?</a>
+        <div class="jumlah card">
+          <h1><i class="fa-solid fa-user-check"></i></h1>
+          <h3>Jumlah Saat Ini</h3>
+          <p>30</p>
+        </div>
+        <div class="tersisa card">
+          <h1><i class="fa-solid fa-users"></i></h1>
+          <h3>Kuota Tersisa</h3>
+          <p>30</p>
+        </div>
+        <div class="maksimal card">
+          <h1><i class="fa-solid fa-users-between-lines"></i></h1>
+          <h3>Maksimal Perhari</h3>
+          <p>30</p>
+        </div>
       </div>
     </section>
     <section id="alur-daftar-pendaki">
@@ -44,76 +48,79 @@
 
       <div class="alur-daftar-container">
         <div class="alur-daftar-1">
+          <h1>1</h1>
           <picture>
             <source />
-            <img src="../../public/images/gunungsindoro.jpg" alt="" />
+            <img src="../../public/images/alur/alur-1.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Pendaki harap membaca halaman home terlebih dahulu</p>
         </div>
 
         <div class="alur-daftar-2">
+          <h1>2</h1>
           <picture>
             <source />
-            <img src="../../public/images/Kuota_walksummit.png" alt="" />
+            <img src="../../public/images/alur/alur-2.png" alt="" />
           </picture>
-          <p>Cek Kuota Jalur yang tersedia</p>
+          <p>Cek Kuota Jalur yang tersedia sebelum mendaftar pendakian</p>
         </div>
 
         <div class="alur-daftar-3">
+          <h1>3</h1>
           <picture>
             <source />
-            <img src="../../public/images/SOP_walksummit.png" alt="" />
+            <img src="../../public/images/alur/alur-3.png" alt="" />
           </picture>
-          <p>Baca dan pahami SOP Pendakian</p>
+          <p>Para pendaki harap baca dan pahami SOP Pendakian</p>
         </div>
 
         <div class="alur-daftar-4">
+          <h1>4</h1>
           <picture>
             <source />
-            <img src="../../public/images/Daftar_walksummit.png" alt="" />
+            <img src="../../public/images/alur/alur-4.png" alt="" />
           </picture>
-          <p>Daftar Pendakian dengan menekan tombol tambah pendaki</p>
+          <p>Setelah itu pergi kependaftaran, masukan tanggal & jalur</p>
         </div>
 
         <div class="alur-daftar-5">
+          <h1>5</h1>
           <picture>
             <source />
-            <img src="../../public/images/Search_walksummit.png" alt="" />
+            <img src="../../public/images/alur/alur-5.png" alt="" />
           </picture>
-          <p>Search berdasarkan ID grup</p>
+          <p>Setelah itu klik tombol tambah pendaki untuk mengisi biodata</p>
         </div>
 
         <div class="alur-daftar-6">
+          <h1>6</h1>
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/alur/alur-6.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Jika sudah harap menunggu untuk diberikan ID Grub</p>
         </div>
 
         <div class="alur-daftar-7">
+          <h1>7</h1>
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/alur/alur-8.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Setelah itu hubungi kontak yang tersedia untuk verifikasi</p>
         </div>
 
         <div class="alur-daftar-8">
+          <h1>8</h1>
           <picture>
             <source />
-            <img src="" alt="" />
+            <img src="../../public/images/alur/alur-8.png" alt="" />
           </picture>
-          <p>Alur daftar ke-1</p>
+          <p>Jika sudah status akan berubah "LUNAS" di halaman pencarian</p>
         </div>
-
-        <div class="alur-daftar-9">
-          <picture>
-            <source />
-            <img src="" alt="" />
-          </picture>
-          <p>Alur daftar ke-1</p>
-        </div>
+      </div>
+      <div class="container">
+        <a class="daftar" href="/daftar">Ingin daftar mendaki ?</a>
       </div>
     </section>
     <section id="galeri-gunung">
@@ -136,6 +143,15 @@
         </picture>
       </div>
     </section>
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="list">
+        <p><i class="fa-solid fa-phone"></i>(+62) 83434342</p>
+        <p><i class="fa-solid fa-phone"></i>(+62) 83434342</p>
+        <p><i class="fa-solid fa-phone"></i>(+62) 83434342</p>
+        <p><i class="fa-solid fa-phone"></i>(+62) 83434342</p>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -147,101 +163,134 @@ main {
   #hero {
     position: relative;
     z-index: -2;
+    margin-bottom: 40px;
     picture {
       img {
         width: 100%;
-        min-height: 400px;
-        max-height: 700px;
+        height: 450px;
+        object-fit: cover;
+        object-position: center;
       }
     }
     .welcome {
+      width: 100%;
+      height: 450px;
       padding: 10px 20px;
-      position: absolute;
-      z-index: 0;
-      top: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      gap: 20px;
-      color: white;
+      background-image: url("../../public/images/sindoro.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      h1 {
+        font-family: "Lobster", cursive;
+        font-size: 50px;
+        text-align: center;
+        color: white;
+      }
     }
   }
   #informasi-gunung {
+    width: 100%;
     display: flex;
     padding: 10px 20px;
+    margin: 0 auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 15px;
+    h2 {
+      font-family: "Quicksand";
+      font-size: 30px;
+      margin: 30px 0;
+    }
     .informasi-detail-gunung {
-      width: 100%;
-      padding: 20px 40px;
+      width: 80%;
+      padding: 30px 40px;
+      margin-bottom: 40px;
       display: flex;
       flex-direction: column;
       gap: 5px;
       font-size: 18px;
       background-color: #dbdffd;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 5px 15px 0px;
+      border-radius: 10px;
+      .fa-solid {
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+      }
+      p {
+        font-family: "Quicksand";
+        font-weight: 800;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      iframe {
+        width: 100%;
+        height: 450px;
+        margin: 20px 0;
+        border-radius: 10px;
+      }
     }
     .informasi-pendaki-gunung {
-      width: 100%;
+      width: 60%;
       padding: 20px 40px;
+      margin-bottom: 40px;
       display: flex;
-      flex-direction: column;
-      gap: 5px;
+      justify-content: center;
       font-size: 18px;
       background-color: #dbdffd;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    }
-    .container {
-      display: flex;
-      padding: 20px 20px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 5px 15px 0px;
       border-radius: 10px;
-      flex-direction: column;
-      align-items: center;
-      background-color: yellowgreen;
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-      z-index: 0;
-    }
-    .daftar {
-      font-family: "Dancing Script", cursive;
-      color: black;
-      position: relative;
-      z-index: 0;
-    }
-    .daftar::after {
-      position: absolute;
-      content: "";
-      width: 0%;
-      height: 4px;
-      background-color: red;
-      left: 50%;
-      bottom: -10px;
-      transition: all 0.4s ease-in-out;
-    }
-    .container:hover {
-      cursor: pointer;
-    }
-    .container:hover .daftar::after {
-      width: 100%;
-      left: 0;
+      .card {
+        margin: 20px 50px;
+        text-align: center;
+        h1 {
+          font-size: 50px;
+          margin-bottom: 10px;
+        }
+        h3 {
+          font-family: "Quicksand";
+          font-weight: 800;
+          margin-bottom: 10px;
+        }
+        p {
+          font-family: "Quicksand";
+          font-weight: 800;
+          font-size: 50px;
+        }
+      }
     }
   }
   #alur-daftar-pendaki {
+    width: 80%;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
+    margin: 0 auto 40px auto;
+    h2{
+      font-family: "Quicksand";
+      font-weight: 800;
+      font-size: 30px;
+      margin: 30px 0;
+    }
+    picture {
+      margin: 10px 0;
+    }
+    p {
+      text-align: center;
+    }
     .alur-daftar-container {
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(1, 1fr);
+      font-family: "Quicksand";
+      font-weight: 800;
       .alur-daftar-1,
       .alur-daftar-2,
       .alur-daftar-3,
@@ -255,9 +304,9 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 10px 20px;
+        padding: 20px 20px;
         gap: 10px;
-        background-color: #dbdffd;
+        border-radius: 10px;
         picture {
           img {
             width: 100%;
@@ -270,14 +319,55 @@ main {
         }
       }
     }
+    .container {
+      display: flex;
+      padding: 20px 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      flex-direction: column;
+      align-items: center;
+      background-color: #dbdffd;
+    }
+    .daftar {
+      font-family: "Quicksand";
+      font-weight: 800;
+      color: black;
+      position: relative;
+      z-index: 0;
+    }
+    .daftar::after {
+      position: absolute;
+      content: "";
+      width: 0%;
+      height: 4px;
+      background-color: green;
+      left: 50%;
+      bottom: -10px;
+      transition: all 0.4s ease-in-out;
+    }
+    .container:hover {
+      cursor: pointer;
+    }
+    .container:hover .daftar::after {
+      width: 100%;
+      left: 0;
+    }
   }
   #galeri-gunung {
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     padding: 10px 20px;
+    margin-bottom: 40px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    h2 {
+      font-family: "Quicksand";
+      font-size: 30px;
+      margin: 30px 0;
+    }
     .list-galeri {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
@@ -295,9 +385,119 @@ main {
       }
     }
   }
+  #contact {
+    width: 80%;
+    padding: 20px;
+    margin: 0 auto 40px auto;
+    h2{
+      font-family: 'Quicksand';
+      margin: 30px 0;
+    }
+    .list {
+      display: grid;
+      grid-template-columns: 1fr;
+      .fa-solid {
+        margin-right: 8px;
+      }
+      p {
+        font-family: "Quicksand";
+        font-weight: 800;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
+@media only screen and (max-width: 600px) {
+  main {
+    #hero {
+      .welcome {
+        height: 200px;
+        h1 {
+          font-size: 25px;
+        }
+      }
+    }
+    #informasi-gunung {
+      h2 {
+        font-size: 20px;
+      }
+      .informasi-detail-gunung {
+        padding: 16px;
+        width: 90%;
+        .fa-solid {
+          width: 10px;
+          height: 10px;
+        }
+        p {
+          font-size: 15px;
+        }
+        iframe {
+          width: 100%;
+          height: 250px;
+        }
+      }
+      .informasi-pendaki-gunung {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+    #alur-daftar-pendaki{
+      h2{
+        font-size: 20px;
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  main {
+    #hero {
+      .welcome {
+        height: 300px;
+        h1 {
+          font-size: 35px;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   main {
+    #hero {
+      .welcome {
+        height: 350px;
+        h1 {
+          font-size: 35px;
+        }
+      }
+    }
+    #informasi-gunung {
+      .informasi-detail-gunung {
+        padding: 26px;
+        width: 90%;
+        .fa-solid {
+          width: 20px;
+          height: 20px;
+        }
+        p {
+          font-size: 20px;
+        }
+        iframe {
+          width: 100%;
+          height: 250px;
+        }
+      }
+      .informasi-pendaki-gunung {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
     #alur-daftar-pendaki {
       .alur-daftar-container {
         grid-template-columns: repeat(2, 1fr);
@@ -310,15 +510,60 @@ main {
     }
   }
 }
+
 @media only screen and (min-width: 1020px) {
   main {
     margin-top: 70px;
+    #hero {
+      .welcome {
+        height: 300px;
+        h1 {
+          font-size: 30px;
+        }
+      }
+    }
+    #informasi-gunung {
+      h2 {
+        font-size: 25px;
+      }
+      .informasi-detail-gunung {
+        width: 100%;
+        p {
+          font-size: 16px;
+        }
+        iframe {
+          width: 100%;
+          height: 300px;
+        }
+      }
+      .informasi-pendaki-gunung {
+        width: 60%;
+        display: flex;
+        flex-wrap: nowrap;
+        .card {
+          h1{
+            font-size: 40px;
+          }
+          h3{
+            font-size: 16px;
+          }
+        }
+      }
+    }
     #alur-daftar-pendaki {
+      width: 100%;
+      h2 {
+        font-size: 25px;
+      }
       .alur-daftar-container {
         grid-template-columns: repeat(3, 1fr);
       }
     }
     #galeri-gunung {
+      width: 80%;
+      h2 {
+        font-size: 25px;
+      }
       .list-galeri {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -327,14 +572,144 @@ main {
 }
 @media only screen and (min-width: 1200px) {
   main {
+    margin-top: 70px;
+    #hero {
+      .welcome {
+        height: 450px;
+        h1 {
+          font-size: 50px;
+        }
+      }
+    }
+    #informasi-gunung {
+      h2{
+        font-size: 30px;
+      }
+      .informasi-detail-gunung {
+        width: 80%;
+        p {
+          font-size: 20px;
+        }
+        iframe {
+          width: 100%;
+          height: 450px;
+        }
+      }
+      .informasi-pendaki-gunung {
+        width: 50%;
+        display: flex;
+        flex-wrap: nowrap;
+      }
+    }
     #alur-daftar-pendaki {
+      width: 80%;
+      h2{
+        font-size: 30px;
+      }
       .alur-daftar-container {
         grid-template-columns: repeat(3, 1fr);
+        img {
+          width: 100%;
+          height: 200px;
+        }
       }
     }
     #galeri-gunung {
+      width: 80%;
+      h2{
+        font-size: 30px;
+      }
       .list-galeri {
         grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    #contact {
+      width: 80%;
+      h2 {
+        font-size: 30px;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1600px) {
+  main {
+    margin-top: 70px;
+    #hero {
+      .welcome {
+        height: 650px;
+        h1 {
+          font-size: 80px;
+        }
+      }
+    }
+    #informasi-gunung {
+      h2 {
+        font-size: 50px;
+      }
+      .informasi-detail-gunung {
+        width:80%;
+        .fa-solid {
+          width: 30px;
+          height: 30px;
+        }
+        p {
+          font-size: 30px;
+        }
+        iframe {
+          width: 100%;
+          height: 600px;
+        }
+      }
+      .informasi-pendaki-gunung {
+        width: 50%;
+        .card {
+        margin: 20px 50px;
+        text-align: center;
+        h1 {
+          font-size: 80px;
+          margin-bottom: 10px;
+        }
+        h3 {
+          font-family: "Quicksand";
+          font-weight: 800;
+          font-size: 40px;
+          margin-bottom: 10px;
+        }
+        p {
+          font-family: "Quicksand";
+          font-weight: 800;
+          font-size: 80px;
+        }
+        }
+      }
+    }
+    #alur-daftar-pendaki {
+      width: 80%;
+      h2 {
+        font-size: 50px;
+      }
+      h1 {
+        font-size: 30px;
+      }
+      p {
+        font-size: 30px;
+      }
+      .alur-daftar-container {
+        grid-template-columns: repeat(4, 1fr);
+        img {
+          width: 100%;
+          height: 500px;
+        }
+      }
+      .container {
+        width: 300px;
+        padding: 20px;
+        font-size: 20px;
+      }
+    }
+    #galeri-gunung {
+      h2 {
+        font-size: 50px;
       }
     }
   }

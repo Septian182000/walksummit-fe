@@ -137,7 +137,6 @@ function clearSearch() {
       <div id="list-grup"></div>
     </div>
   </main>
-  <footer>&copy; WalkSummit <span>2k22</span></footer>
 </template>
 
 <style scoped lang="scss">
@@ -229,17 +228,6 @@ main {
       font-size: medium;
       font-weight: bold;
     }
-  }
-}
-footer {
-  background-color: #354259;
-  color: white;
-  font-family: "Quicksand";
-  font-size: 16px;
-  padding: 16px;
-  text-align: center;
-  span {
-    color: red;
   }
 }
 @media only screen and (max-width: 600px) {
