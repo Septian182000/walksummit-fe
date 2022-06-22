@@ -1,5 +1,24 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+const calcScrollValue = () => {
+  const onProgress = document.getElementById("scrollUp");
+  const pos = document.documentElement.scrollTop;
+  const prosHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  const scrollValue = Math.round((pos * 100) / prosHeight);
+  if (pos > 100) {
+    onProgress.style.display = "grid";
+  } else {
+    onProgress.style.display = "none";
+  }
+  onProgress.addEventListener("click", () => {
+    document.documentElement.scrollTop = 0;
+  });
+  onProgress.style.background = `conic-gradient(#FFE61B ${scrollValue}%, #FFFFFF ${scrollValue}%)`;
+};
+window.onscroll = calcScrollValue;
+window.onload = calcScrollValue;
 </script>
 
 <template>
@@ -50,11 +69,14 @@ import { RouterLink, RouterView } from "vue-router";
       </ul>
     </nav>
   </header>
+  <main>
+    <div id="scrollUp"><i class="fa-solid fa-angles-up"></i></div>
+  </main>
   <RouterView />
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Ms+Madi&family=Quicksand:wght@300&family=Rock+Salt&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -184,6 +206,34 @@ header {
     left: 0;
   }
 }
+main {
+  #scrollUp {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    height: 70px;
+    width: 70px;
+    display: block;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    color: black;
+  }
+
+  #progress {
+    display: block;
+    height: calc(100% - 15px);
+    width: calc(100% - 15px);
+    background-color: #05595b;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    color: whitesmoke;
+  }
+}
+
 @media only screen and (min-width: 1024px) {
   header {
     width: 100%;

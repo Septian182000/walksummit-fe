@@ -292,6 +292,8 @@ function checkForms() {
     containerModal.addEventListener("click", (event) => {
       event.stopPropagation();
       containerModal.style.display = "none";
+      const listContainer = document.querySelector("#list-grup");
+      listContainer.innerHTML = "";
     });
   };
 }
@@ -613,11 +615,11 @@ function checkForms() {
 
 <template>
   <main>
-    <h2>Daftar Pendakian Gunung</h2>
+    <h2 tabindex="0">Daftar Pendakian Gunung</h2>
 
     <div class="tanggal-container">
       <form action="">
-        <label for="">Tanggal Berangkat</label>
+        <label for="" tabindex="0">Tanggal Berangkat</label>
         <input
           class="input-berangkat"
           type="date"
@@ -625,7 +627,7 @@ function checkForms() {
           required
         />
         {{ berangkat }}
-        <label for="">Tanggal Pulang</label>
+        <label for="" tabindex="0">Tanggal Pulang</label>
         <input
           class="input-pulang"
           type="date"
@@ -633,7 +635,7 @@ function checkForms() {
           required
         />
         {{ pulang }}
-        <label for="">Pilih Jalur</label>
+        <label for="" tabindex="0">Pilih Jalur</label>
         <div class="select">
           <select
             class="jalur"
@@ -642,19 +644,19 @@ function checkForms() {
             v-model="formsPendakian.jalur"
             required
           >
-            <option value="1">jalur1</option>
-            <option value="2">jalur2</option>
-            <option value="3">jalur3</option>
-            <option value="4">jalur4</option>
-            <option value="5">jalur5</option>
+            <option value="1">Kledung</option>
+            <option value="2">Alang-Alang Sewu</option>
+            <option value="3">Ndoro Arum</option>
+            <option value="4">Sigedang</option>
+            <option value="5">Bansari</option>
           </select>
         </div>
         {{ jalur }}
       </form>
       <div class="alert-required"></div>
     </div>
-    <h2>Informasi Pendaki</h2>
-    <button class="add-button" @click="addForm">
+    <h2 tabindex="0">Informasi Pendaki</h2>
+    <button class="add-button" @click="addForm" tabindex="0" aria-label="Masukan biodata pendaki">
       <i class="fa-solid fa-user-plus"></i>Pendaki
     </button>
     <div class="alert-tambah-pendaki"></div>
@@ -665,7 +667,7 @@ function checkForms() {
         v-for="form in forms"
       ></form-biodata>
     </div>
-    <button @click.prevent="checkForms()" type="submit">
+    <button @click.prevent="checkForms()" type="submit" tabindex="0" aria-label="Selesai Mendaftar">
       <i class="fa-solid fa-circle-check"></i>Selesai
     </button>
     <div class="modal-container"></div>
