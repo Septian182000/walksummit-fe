@@ -19,8 +19,8 @@ function getAllKuota() {
       const content = document.querySelector(".content");
       content.innerHTML += `
       <div class="card-jalur">
-        <h2>Via ${jalur.nama}</h2>
-        <h3>Sisa Kuota Hari ini : <i class="fa-solid fa-person-hiking"></i>${jalur.kuota}</h3>
+        <h2 tabindex="0">Via ${jalur.nama}</h2>
+        <h3 tabindex="0">Sisa Kuota Hari ini : <i class="fa-solid fa-person-hiking"></i>${jalur.kuota}</h3>
       </div>
       <style>
       .content{
@@ -45,7 +45,7 @@ function getAllKuota() {
         }
       </style>
       `;
-      })
+    });
   };
   show();
 }

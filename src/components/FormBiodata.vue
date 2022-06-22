@@ -15,7 +15,7 @@ const form = reactive({
 
 <template>
   <form class="form-biodata" action="">
-    <h2>Biodata</h2>
+    <h2 tabindex="0">Biodata</h2>
     <div class="input_style">
       <input
         class="input_style__input"
@@ -24,7 +24,7 @@ const form = reactive({
         v-model="form.nik"
         @input="$emit('formChanges', form)"
       />
-      <label for="" class="input_style__label">NIK</label>
+      <label for="" class="input_style__label" tabindex="0">NIK</label>
     </div>
     <div class="input_style">
       <input
@@ -35,7 +35,7 @@ const form = reactive({
         @input="$emit('formChanges', form)"
         required
       />
-      <label for="" class="input_style__label">Nama</label>
+      <label for="" class="input_style__label" tabindex="0">Nama</label>
     </div>
     <div class="input_style">
       <input
@@ -46,7 +46,7 @@ const form = reactive({
         @input="$emit('formChanges', form)"
         required
       />
-      <label for="" class="input_style__label">Alamat</label>
+      <label for="" class="input_style__label" tabindex="0">Alamat</label>
     </div>
     <div class="input_style">
       <input
@@ -57,7 +57,7 @@ const form = reactive({
         @input="$emit('formChanges', form)"
         required
       />
-      <label for="" class="input_style__label">No.Hp</label>
+      <label for="" class="input_style__label" tabindex="0">No.Hp</label>
     </div>
     <div class="input_style">
       <input
@@ -68,9 +68,9 @@ const form = reactive({
         @input="$emit('formChanges', form)"
         required
       />
-      <label for="" class="input_style__label">No.Kerabat</label>
+      <label for="" class="input_style__label" tabindex="0">No.Kerabat</label>
     </div>
-    <label for="" class="title-gender">Jenis kelamin</label>
+    <label for="" class="title-gender" tabindex="0">Jenis kelamin</label>
     <div class="radio-button">
       <div>
         <input
@@ -82,7 +82,7 @@ const form = reactive({
           @input="$emit('formChanges', form)"
           required
         />
-        <label for="">Pria</label>
+        <label for="" tabindex="0">Pria</label>
       </div>
 
       <div>
@@ -95,7 +95,7 @@ const form = reactive({
           @input="$emit('formChanges', form)"
           required
         />
-        <label for="">Wanita</label>
+        <label for="" tabindex="0">Wanita</label>
       </div>
     </div>
   </form>

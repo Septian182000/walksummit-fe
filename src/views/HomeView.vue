@@ -2,121 +2,123 @@
 
 <template>
   <main>
+    <a href="#informasi-gunung" class="skip-link" tabindex="0">Going to Content</a>
     <section id="hero">
       <div class="welcome">
-        <h1>Selamat datang di gunung Sindoro</h1>
+        <h1 tabindex="0">Selamat Datang Di Gunung Sindoro</h1>
       </div>
     </section>
     <section id="informasi-gunung">
-      <h2>Informasi Gunung Sindoro</h2>
+      <h2 tabindex="0">Informasi Gunung Sindoro</h2>
       <div class="informasi-detail-gunung">
-        <p><i class="fa-solid fa-mountain"></i>3.153 mdpl</p>
-        <p><i class="fa-solid fa-volcano"></i>Semi Aktif</p>
-        <p><i class="fa-solid fa-money-bill-wave"></i>Rp.25,000 (Tiap Jalur)</p>
-        <p><i class="fa-solid fa-road"></i>Kledung (via favorite)</p>
-        <p><i class="fa-solid fa-compass"></i>7.3010463°S 109.9968767°E</p>
-        <p><i class="fa-solid fa-location-dot"></i>Desa Katekan,KecamatanNgadirejo</p>
-        <p><i class="fa-solid fa-map"></i>Kabupaten Temanggung, danKabupatenWonosobo.</p>
+        <p tabindex="0" aria-label="Ketinggian 3.153 mdpl"><i class="fa-solid fa-mountain"></i>3.153 mdpl</p>
+        <p tabindex="0" aria-label="Berstatus Semi Aktif"><i class="fa-solid fa-volcano"></i>Semi Aktif</p>
+        <p tabindex="0" aria-label="Harga Tiket Masuk 25 ribu"><i class="fa-solid fa-money-bill-wave"></i>Rp.25,000 (Tiap Jalur)</p>
+        <p tabindex="0" aria-label="Kledung Jalur favorit"><i class="fa-solid fa-road"></i>Kledung (via favorite)</p>
+        <p tabindex="0" ><i class="fa-solid fa-compass"></i>7.3010463°S 109.9968767°E</p>
+        <p tabindex="0" ><i class="fa-solid fa-location-dot"></i>Desa Katekan, Kecamatan Ngadirejo</p>
+        <p tabindex="0" ><i class="fa-solid fa-map"></i>Kabupaten Temanggung, dan Kabupaten Wonosobo.</p>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31659.65199144163!2d109.97832366852224!3d-7.302499512684031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70757555351a43%3A0x6e1fd0eaed14acb5!2sGn.%20Sindoro!5e0!3m2!1sid!2sid!4v1654936415761!5m2!1sid!2sid"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
+          tabindex="0"
         ></iframe>
       </div>
-      <h2>Informasi Pendaki Gunung Sindoro</h2>
+      <h2 tabindex="0">Informasi Pendaki Gunung Sindoro</h2>
       <div class="informasi-pendaki-gunung">
         <div class="jumlah card">
           <h1><i class="fa-solid fa-user-check"></i></h1>
-          <h3>Jumlah Saat Ini</h3>
-          <p>30</p>
+          <h3 tabindex="0">Jumlah Saat Ini</h3>
+          <p tabindex="0">30</p>
         </div>
         <div class="tersisa card">
           <h1><i class="fa-solid fa-users"></i></h1>
-          <h3>Kuota Tersisa</h3>
-          <p>30</p>
+          <h3 tabindex="0">Kuota Tersisa</h3>
+          <p tabindex="0">30</p>
         </div>
         <div class="maksimal card">
           <h1><i class="fa-solid fa-users-between-lines"></i></h1>
-          <h3>Maksimal Perhari</h3>
-          <p>30</p>
+          <h3 tabindex="0">Maksimal Perhari</h3>
+          <p tabindex="0">30</p>
         </div>
       </div>
     </section>
     <section id="alur-daftar-pendaki">
-      <h2>Alur Pendaftaran Pendakian</h2>
+      <h2 tabindex="0">Alur Pendaftaran Pendakian</h2>
 
       <div class="alur-daftar-container">
         <div class="alur-daftar-1">
-          <h1>1</h1>
+          <h1 tabindex="0" aria-label="pertama">1</h1>
           <picture>
             <source />
-            <img src="../../public/images/alur/alur-1.png" alt="" />
+            <img src="../../public/images/alur/alur-1.png" alt="Alur Pertama" />
           </picture>
-          <p>Pendaki harap membaca halaman home terlebih dahulu</p>
+          <p tabindex="0">Pendaki harap membaca halaman home terlebih dahulu</p>
         </div>
 
         <div class="alur-daftar-2">
-          <h1>2</h1>
+          <h1 tabindex="0" aria-label="kedua">2</h1>
           <picture>
             <source />
-            <img src="../../public/images/alur/alur-2.png" alt="" />
+            <img src="../../public/images/alur/alur-2.png" alt="Alur Kedua" />
           </picture>
-          <p>Cek Kuota Jalur yang tersedia sebelum mendaftar pendakian</p>
+          <p tabindex="0">Cek Kuota Jalur yang tersedia sebelum mendaftar pendakian</p>
         </div>
 
         <div class="alur-daftar-3">
-          <h1>3</h1>
+          <h1 tabindex="0" aria-label="ketiga">3</h1>
           <picture>
             <source />
-            <img src="../../public/images/alur/alur-3.png" alt="" />
+            <img src="../../public/images/alur/alur-3.png" alt="Alur Ketiga" />
           </picture>
-          <p>Para pendaki harap baca dan pahami SOP Pendakian</p>
+          <p tabindex="0">Para pendaki harap baca dan pahami SOP Pendakian</p>
         </div>
 
         <div class="alur-daftar-4">
-          <h1>4</h1>
+          <h1 tabindex="0" aria-label="keempat">4</h1>
           <picture>
             <source />
-            <img src="../../public/images/alur/alur-4.png" alt="" />
+            <img src="../../public/images/alur/alur-4.png" alt="Alur Keempat" />
           </picture>
-          <p>Setelah itu pergi kependaftaran, masukan tanggal & jalur</p>
+          <p tabindex="0">Setelah itu pergi kependaftaran, masukan tanggal & jalur</p>
         </div>
 
         <div class="alur-daftar-5">
-          <h1>5</h1>
+          <h1 tabindex="0" aria-label="kelima">5</h1>
           <picture>
             <source />
-            <img src="../../public/images/alur/alur-5.png" alt="" />
+            <img src="../../public/images/alur/alur-5.png" alt="Alur Kelima" />
           </picture>
-          <p>Setelah itu klik tombol tambah pendaki untuk mengisi biodata</p>
+          <p tabindex="0">Setelah itu klik tombol tambah pendaki untuk mengisi biodata</p>
         </div>
 
         <div class="alur-daftar-6">
-          <h1>6</h1>
+          <h1 tabindex="0" aria-label="keenam">6</h1>
           <picture>
             <source />
-            <img src="../../public/images/alur/alur-6.png" alt="" />
+            <img src="../../public/images/alur/alur-6.png" alt="Alur Keenam" />
           </picture>
-          <p>Jika sudah harap menunggu untuk diberikan ID Grub</p>
+          <p tabindex="0">Jika sudah harap menunggu untuk diberikan ID Grub</p>
         </div>
 
         <div class="alur-daftar-7">
-          <h1>7</h1>
+          <h1 tabindex="0" aria-label="ketujuh">7</h1>
           <picture>
             <source />
-            <img src="../../public/images/alur/alur-7.png" alt="" />
+            <img src="../../public/images/alur/alur-7.png" alt="Alur Ketujuh" />
           </picture>
-          <p>Setelah itu hubungi kontak yang tersedia untuk verifikasi</p>
+          <p tabindex="0">Setelah itu hubungi kontak yang tersedia untuk verifikasi</p>
         </div>
 
         <div class="alur-daftar-8">
-          <h1>8</h1>
+          <h1 tabindex="0" aria-label="kedelapan">8</h1>
           <picture>
             <source />
-            <img src="../../public/images/alur/alur-8.png" alt="" />
+            <img src="../../public/images/alur/alur-8.png" alt="Alur Kedelapan" />
           </picture>
-          <p>Jika sudah status akan berubah "LUNAS" di halaman pencarian</p>
+          <p tabindex="0">Jika sudah status akan berubah "LUNAS" di halaman pencarian</p>
         </div>
       </div>
       <div class="container">
@@ -124,7 +126,7 @@
       </div>
     </section>
     <section id="galeri-gunung">
-      <h2>Galeri Gunung Sindoro</h2>
+      <h2 tabindex="0">Galeri Gunung Sindoro</h2>
       <div class="list-galeri">
         <picture>
           <source />
@@ -144,24 +146,24 @@
       </div>
     </section>
     <section id="contact">
-      <h2>Contact Us</h2>
+      <h2 tabindex="0" aria-label="Hubungi Kami">Contact Us</h2>
       <hr>
       <div class="list">
         <div class="box">
           <h1><i class="fa-solid fa-face-grin-wink"></i></h1>
-          <p>(+62) 83434342</p>
+          <p tabindex="0" aria-label="083434342">(+62) 83434342</p>
         </div>
         <div class="box">
           <h1><i class="fa-solid fa-face-grin-wink"></i></h1>
-          <p>(+62) 83434342</p>
+          <p tabindex="0" aria-label="083434342">(+62) 83434342</p>
         </div>
         <div class="box">
           <h1><i class="fa-solid fa-face-grin-wink"></i></h1>
-          <p>(+62) 83434342</p>
+          <p tabindex="0" aria-label="083434342">(+62) 83434342</p>
         </div>
         <div class="box">
           <h1><i class="fa-solid fa-face-grin-wink"></i></h1>
-          <p>(+62) 83434342</p>
+          <p tabindex="0" aria-label="083434342">(+62) 83434342</p>
         </div>
       </div>
     </section>
@@ -173,6 +175,18 @@ main {
   width: 100%;
   height: 100vh;
   margin-top: 80px;
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: #F8B400;
+    color: black;
+    padding: 8px;
+    z-index: 100;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
   #hero {
     position: relative;
     z-index: -2;

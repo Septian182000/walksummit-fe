@@ -18,7 +18,7 @@ function search(searchID) {
       })
       .catch(() => {
         const listContainer = document.querySelector("#list-grup");
-        listContainer.innerHTML = `<p>Data Tidak Ditemukan</p>`;
+        listContainer.innerHTML = `<p tabindex="0">Data Tidak Ditemukan</p>`;
       });
     return data;
   };
@@ -34,10 +34,10 @@ function search(searchID) {
     const listContainer = document.querySelector("#list-grup");
     listContainer.innerHTML = `
         <div id="info-grup">
-          <p>Id Grup: ${id}</p>
-          <p>Nama Koordinator: ${nama}</p>
-          <p>Status Pembayaran: ${statusPembayaran}</p>
-          <p>Jalur: ${jalur}</p>
+          <p tabindex="0">Id Grup: ${id}</p>
+          <p tabindex="0">Nama Koordinator: ${nama}</p>
+          <p tabindex="0">Status Pembayaran: ${statusPembayaran}</p>
+          <p tabindex="0">Jalur: ${jalur}</p>
         </div>
         <style>
         #info-grup{
@@ -113,27 +113,28 @@ function clearSearch() {
   <main>
     <h1>Grub Pendaki</h1>
     <form action="">
-      <label for="idsearch">Cari Id Grup:</label>
+      <label for="idsearch" tabindex="0" aria-label="Pencarian Grub">Cari Id Grup:</label>
       <input
         type="search"
         id="idsearch"
         name="idsearch"
         placeholder="Search.."
         v-model="searchID"
+        aria-label="kolom pencarian"
         @input="searchInput(searchID)"
       />
     </form>
     <div class="search-button-container">
-      <button type="submit" class="btn btn-white" @click="search(searchID)">
+      <button type="submit" class="btn btn-white" @click="search(searchID)" aria-label="Mulai Mencari">
         Search
       </button>
-      <button type="submit" class="btn btn-red" @click="clearSearch()">
+      <button type="submit" class="btn btn-red" @click="clearSearch()" aria-label="Menghapus Pencarian">
         Clear
       </button>
     </div>
 
     <div id="hasil-search-container">
-      <h2>Hasil Pencarian</h2>
+      <h2 tabindex="0">Hasil Pencarian</h2>
       <div id="list-grup"></div>
     </div>
   </main>
