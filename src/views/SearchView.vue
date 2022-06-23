@@ -29,14 +29,15 @@ function search(searchID) {
     const id = responseJson.data.id;
     const nama = responseJson.data.koordinator;
     const statusPembayaran =
-      responseJson.data.status == 0 ? "Belum Bayar" : "Sudah Lunas";
+    responseJson.data.status == 0 ? "Belum Bayar" : "Sudah Lunas";
     const jalur = responseJson.data.jalur;
     const listContainer = document.querySelector("#list-grup");
+
     listContainer.innerHTML = `
         <div id="info-grup">
           <p tabindex="0">Id Grup: ${id}</p>
           <p tabindex="0">Nama Koordinator: ${nama}</p>
-          <p tabindex="0">Status Pembayaran: ${statusPembayaran}</p>
+          <p tabindex="0">Status Pembayaran: <span class="status-bayar">${statusPembayaran}</span></p>
           <p tabindex="0">Jalur: ${jalur}</p>
         </div>
         <style>
@@ -53,6 +54,19 @@ function search(searchID) {
     listContainer.style.display = "flex";
     listContainer.style.flexDirection = "column";
     listContainer.style.gap = "20px";
+    if (statusPembayaran == "Belum Bayar") {
+      const status = document.querySelector(".status-bayar");
+      status.style.backgroundColor = "red";
+      status.style.padding = '10px';
+      status.style.borderRadius = '10px';
+      status.style.fontWeight = 'bolder';
+    } else {
+      const status = document.querySelector(".status-bayar");
+      status.style.backgroundColor = "green";
+      status.style.padding = '10px';
+      status.style.borderRadius = '10px';
+      status.style.fontWeight = 'bolder';
+    }
   };
   show();
 }
@@ -110,10 +124,12 @@ function clearSearch() {
 </script>
 
 <template>
-  <main>
+  <main id="main" tabindex="0">
     <h1>Grub Pendaki</h1>
     <form action="">
-      <label for="idsearch" tabindex="0" aria-label="Pencarian Grub">Cari Id Grup:</label>
+      <label for="idsearch" tabindex="0" aria-label="Pencarian Grub"
+        >Cari Id Grup:</label
+      >
       <input
         type="search"
         id="idsearch"
@@ -125,10 +141,20 @@ function clearSearch() {
       />
     </form>
     <div class="search-button-container">
-      <button type="submit" class="btn btn-white" @click="search(searchID)" aria-label="Mulai Mencari">
+      <button
+        type="submit"
+        class="btn btn-white"
+        @click="search(searchID)"
+        aria-label="Mulai Mencari"
+      >
         Search
       </button>
-      <button type="submit" class="btn btn-red" @click="clearSearch()" aria-label="Menghapus Pencarian">
+      <button
+        type="submit"
+        class="btn btn-red"
+        @click="clearSearch()"
+        aria-label="Menghapus Pencarian"
+      >
         Clear
       </button>
     </div>
@@ -234,10 +260,10 @@ main {
 @media only screen and (max-width: 600px) {
   main {
     width: 100%;
-    form{
+    form {
       width: 100%;
     }
-    #hasil-search-container{
+    #hasil-search-container {
       width: 90%;
     }
   }

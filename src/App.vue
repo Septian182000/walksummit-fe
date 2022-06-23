@@ -23,6 +23,7 @@ window.onload = calcScrollValue;
 
 <template>
   <header>
+    <a href="#main" class="skip-link" tabindex="0">Going to Content</a>
     <button arial-label="navigasi" class="hamburger-button">
       <svg
         class="hamburger-icon"
@@ -96,6 +97,19 @@ header {
   justify-content: space-between;
   background-color: #354259;
   z-index: 99;
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: #F8B400;
+    color: black;
+    padding: 8px;
+    z-index: 100;
+    width: 200px;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
   a {
     display: flex;
     align-items: center;

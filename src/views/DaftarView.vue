@@ -614,7 +614,7 @@ function checkForms() {
 </script>
 
 <template>
-  <main>
+  <main id="main" tabindex="0">
     <h2 tabindex="0">Daftar Pendakian Gunung</h2>
 
     <div class="tanggal-container">

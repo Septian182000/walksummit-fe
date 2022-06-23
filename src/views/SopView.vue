@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <main>
+  <main id="main" tabindex="0">
     <div class="header">
       <h1 tabindex="0">SOP Gunung Sindoro</h1>
       <hr>

@@ -55,7 +55,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>
+  <main id="main" tabindex="0">
     <div class="header">
       <h1>Kuota Tiap Jalur</h1>
     </div>
