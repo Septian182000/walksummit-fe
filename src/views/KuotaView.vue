@@ -4,7 +4,7 @@ import { ref, onMounted } from "vue";
 function getAllKuota() {
   const showKuota = async () => {
     const { data } = await axios
-      .get(`http://127.0.0.1:8000/api/informasi-gunung`)
+      .get(`http://walksummit-be.herokuapp.com/api/informasi-gunung`)
       .then(function (response) {
         return response;
       })

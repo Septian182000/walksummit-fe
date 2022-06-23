@@ -1,5 +1,6 @@
 <script setup>
 import FormBiodata from "../components/FormBiodata.vue";
+const BASE_PATH = `${import.meta.env.API_BACKEND}`;
 import { reactive } from "@vue/reactivity";
 const emit = defineEmits(["formChanges"]);
 import axios from "axios";
@@ -58,7 +59,7 @@ function checkForms() {
       `;
     } else {
       const data = await axios
-        .post(`http://127.0.0.1:8000/api/tambah-grup`, {
+        .post(`http://walksummit-be.herokuapp.com/api/tambah-grup`, {
           jalur_id: jalur,
           tgl_brangkat: berangkat,
           tgl_pulang: pulang,
@@ -116,7 +117,7 @@ function checkForms() {
         });
       }
       const data = await axios
-        .post(`http://127.0.0.1:8000/api/tambah-pelanggan`, {
+        .post(`http://walksummit-be.herokuapp.com/api/tambah-pelanggan`, {
           grup_id: idGrup,
           nik: object.nik,
           nama: object.nama,

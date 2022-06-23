@@ -12,7 +12,7 @@ function search(searchID) {
   // console.log(filterID);
   const searchGrup = async () => {
     const { data } = await axios
-      .get(`http://127.0.0.1:8000/api/cari-grup/${searchID}`)
+      .get(`http://walksummit-be.herokuapp.com/api/cari-grup/${searchID}`)
       .then(function (response) {
         return response;
       })
