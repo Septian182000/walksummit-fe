@@ -1,8 +1,39 @@
-<script setup></script>
+<script setup>
+import axios from "axios";
+import { ref, onMounted } from "vue";
+function getAllKuota() {
+  const showKuota = async () => {
+    const { data } = await axios
+      .get(`http://127.0.0.1:8000/api/informasi-gunung`)
+      .then(function (response) {
+        return response;
+      })
+      .catch((error) => console.log(error));
+    return data;
+  };
+  const show = async () => {
+    const responseJson = await showKuota();
+    console.log(responseJson.data);
+    const sisa_kuota = responseJson.data.sisa_kuota;
+    const jumlah_pendaki = responseJson.data.jumlah_pendaki;
+    const kuota_maksimal = responseJson.data.kuota_maksimal;
+    console.log(kuota_maksimal);
+    const jumlahPendakiContent = document.querySelector('.jumlah-pendaki');
+    const tersisaKuotaContent = document.querySelector('.tersisa-kuota');
+    const maksimalKuotaContent = document.querySelector('.maksimal-kuota');
+    jumlahPendakiContent.innerHTML = jumlah_pendaki;
+    tersisaKuotaContent.innerHTML = sisa_kuota;
+    maksimalKuotaContent.innerHTML = kuota_maksimal;
+  };
+  show();
+}
+onMounted(() => {
+  getAllKuota();
+});
+</script>
 
 <template>
-  <main>
-    <a href="#informasi-gunung" class="skip-link" tabindex="0">Going to Content</a>
+  <main id="main" tabindex="0">
     <section id="hero">
       <div class="welcome">
         <h1 tabindex="0">Selamat Datang Di Gunung Sindoro</h1>
@@ -31,17 +62,17 @@
         <div class="jumlah card">
           <h1><i class="fa-solid fa-user-check"></i></h1>
           <h3 tabindex="0">Jumlah Saat Ini</h3>
-          <p tabindex="0">30</p>
+          <p class="jumlah-pendaki" tabindex="0">30</p>
         </div>
         <div class="tersisa card">
           <h1><i class="fa-solid fa-users"></i></h1>
           <h3 tabindex="0">Kuota Tersisa</h3>
-          <p tabindex="0">30</p>
+          <p class="tersisa-kuota" tabindex="0">30</p>
         </div>
         <div class="maksimal card">
           <h1><i class="fa-solid fa-users-between-lines"></i></h1>
           <h3 tabindex="0">Maksimal Perhari</h3>
-          <p tabindex="0">30</p>
+          <p class="maksimal-kuota" tabindex="0">30</p>
         </div>
       </div>
     </section>
