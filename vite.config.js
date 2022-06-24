@@ -10,8 +10,8 @@ export default defineConfig({
     vue(),
     VitePWA({
       includeAssets: [
-        "favicon.svg",
-        "favicon.ico",
+        "favicon3.svg",
+        "favicon3.ico",
         "robots.txt",
         "apple-touch-icon.png",
       ],
@@ -25,17 +25,47 @@ export default defineConfig({
         background_color: "#ffffff",
         icons: [
           {
-            src: "./public/icon-pwa/android/android-launchericon-192-192.png",
+            src: "./public/icon-pwa/icon72.png",
+            sizes: "72x72",
+            type: "image/png",
+          },
+          {
+            src: "./public/icon-pwa/icon96.png",
+            sizes: "96x96",
+            type: "image/png",
+          },
+          {
+            src: "./public/icon-pwa/icon96.png",
+            sizes: "96x96",
+            type: "image/png",
+          },
+          {
+            src: "./public/icon-pwa/icon128.png",
+            sizes: "128x128",
+            type: "image/png",
+          },
+          {
+            src: "./public/icon-pwa/icon144.png",
+            sizes: "144x144",
+            type: "image/png",
+          },
+          {
+            src: "./public/icon-pwa/icon152.png",
+            sizes: "152x152",
+            type: "image/png",
+          },
+          {
+            src: "./public/icon-pwa/icon192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "./public/icon-pwa/android-launchericon-512-512.png",
-            sizes: "512x512",
+            src: "./public/icon-pwa/icon384.png",
+            sizes: "384x384",
             type: "image/png",
           },
           {
-            src: "./public/icon-pwa/android-launchericon-512-512.png",
+            src: "./public/icon-pwa/icon512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
