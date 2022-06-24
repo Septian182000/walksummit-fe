@@ -514,7 +514,7 @@ main {
       }
     }
     #contact {
-      width: 90%;
+      width: 100%;
       h2 {
         font-size: 20px;
       }

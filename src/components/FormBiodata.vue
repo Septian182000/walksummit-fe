@@ -118,7 +118,6 @@ form {
     height: 3rem;
     margin: 6px 0;
     &__input {
-      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
