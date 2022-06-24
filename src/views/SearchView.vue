@@ -29,7 +29,7 @@ function search(searchID) {
     const id = responseJson.data.id;
     const nama = responseJson.data.koordinator;
     const statusPembayaran =
-    responseJson.data.status == 0 ? "Belum Bayar" : "Sudah Lunas";
+      responseJson.data.status == 0 ? "Belum Bayar" : "Sudah Lunas";
     const jalur = responseJson.data.jalur;
     const listContainer = document.querySelector("#list-grup");
 
