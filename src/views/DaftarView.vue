@@ -1,6 +1,5 @@
 <script setup>
 import FormBiodata from "../components/FormBiodata.vue";
-const BASE_PATH = `${import.meta.env.API_BACKEND}`;
 import { reactive } from "@vue/reactivity";
 const emit = defineEmits(["formChanges"]);
 import axios from "axios";
@@ -657,7 +656,12 @@ function checkForms() {
       <div class="alert-required"></div>
     </div>
     <h2 tabindex="0">Informasi Pendaki</h2>
-    <button class="add-button" @click="addForm" tabindex="0" aria-label="Masukan biodata pendaki">
+    <button
+      class="add-button"
+      @click="addForm"
+      tabindex="0"
+      aria-label="Masukan biodata pendaki"
+    >
       <i class="fa-solid fa-user-plus"></i>Pendaki
     </button>
     <div class="alert-tambah-pendaki"></div>
@@ -668,7 +672,12 @@ function checkForms() {
         v-for="form in forms"
       ></form-biodata>
     </div>
-    <button @click.prevent="checkForms()" type="submit" tabindex="0" aria-label="Selesai Mendaftar">
+    <button
+      @click.prevent="checkForms()"
+      type="submit"
+      tabindex="0"
+      aria-label="Selesai Mendaftar"
+    >
       <i class="fa-solid fa-circle-check"></i>Selesai
     </button>
     <div class="modal-container"></div>
