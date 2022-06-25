@@ -75,8 +75,6 @@ function search(searchID) {
     const small = window.matchMedia("(max-width: 600px)");
     function resizeImage(size) {
       if (size.matches) {
-        statusText.style.flexDirection = "column";
-      } else {
         statusText.style.flexDirection = "row";
       }
     }
