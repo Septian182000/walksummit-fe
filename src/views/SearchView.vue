@@ -1,6 +1,7 @@
 <script setup>
 import { reactive } from "@vue/reactivity";
 import axios from "axios";
+import { stat } from "fs";
 function search(searchID) {
   // const list = listForm;
   // const listJson = JSON.stringify(list);
@@ -37,7 +38,7 @@ function search(searchID) {
         <div id="info-grup">
           <p tabindex="0">Id Grup: ${id}</p>
           <p tabindex="0">Nama Koordinator: ${nama}</p>
-          <p tabindex="0">Status Pembayaran: <span class="status-bayar">${statusPembayaran}</span></p>
+          <p class="status-text" tabindex="0">Status Pembayaran: <span class="status-bayar">${statusPembayaran}</span></p>
           <p tabindex="0">Jalur: ${jalur}</p>
         </div>
         <style>
@@ -57,16 +58,29 @@ function search(searchID) {
     if (statusPembayaran == "Belum Bayar") {
       const status = document.querySelector(".status-bayar");
       status.style.backgroundColor = "red";
-      status.style.padding = '10px';
-      status.style.borderRadius = '10px';
-      status.style.fontWeight = 'bolder';
+      status.style.padding = "10px";
+      status.style.borderRadius = "10px";
+      status.style.fontWeight = "bolder";
     } else {
       const status = document.querySelector(".status-bayar");
       status.style.backgroundColor = "green";
-      status.style.padding = '10px';
-      status.style.borderRadius = '10px';
-      status.style.fontWeight = 'bolder';
+      status.style.padding = "10px";
+      status.style.borderRadius = "10px";
+      status.style.fontWeight = "bolder";
     }
+    const statusText = document.querySelector(".status-text");
+    statusText.style.display = "flex";
+    statusText.style.alignItems = "center";
+    statusText.style.gap = '10px';
+    const small = window.matchMedia("(max-width: 600px)");
+    function resizeImage(size) {
+      if (size.matches) {
+        statusText.style.flexDirection = "column";
+      } else {
+        statusText.style.flexDirection = "row";
+      }
+    }
+    resizeImage(small);
   };
   show();
 }
