@@ -85,6 +85,8 @@ function search(searchID) {
 
 function clearSearch() {
   const listContainer = document.querySelector("#list-grup");
+  const inputSearch  = document.querySelector("#idsearch");
+  inputSearch.value = "";
   listContainer.innerHTML = "";
 }
 // const listForm = reactive([
