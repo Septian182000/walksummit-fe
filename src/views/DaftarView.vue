@@ -70,7 +70,6 @@ function checkForms() {
       return data;
     }
   };
-  tambahGrup();
 
   const anggota = forms.map((form) => ({
     nik: form.nik,
