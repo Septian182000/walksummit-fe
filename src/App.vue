@@ -24,7 +24,7 @@ window.onload = calcScrollValue;
 <template>
   <header>
     <a href="#main" class="skip-link" tabindex="0">Going to Content</a>
-    <button arial-label="navigasi" class="hamburger-button">
+    <button aria-label="navigasi" class="hamburger-button">
       <svg
         class="hamburger-icon"
         xmlns="http://www.w3.org/2000/svg"
