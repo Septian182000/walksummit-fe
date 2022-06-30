@@ -114,7 +114,7 @@ onMounted(() => {
             <source />
             <img src="../../public/images/alur/alur-4.png" alt="Alur Keempat" />
           </picture>
-          <p tabindex="0">Setelah itu pergi kependaftaran, masukan tanggal & jalur</p>
+          <p tabindex="0">Pilih Navigasi Daftar, masukan tanggal & jalur</p>
         </div>
 
         <div class="alur-daftar-5">
@@ -369,9 +369,7 @@ main {
         picture {
           img {
             width: 100%;
-            min-height: 250px;
-            max-width: 700px;
-            max-height: 400px;
+            height: 400px;
             background-color: #9d9a9a;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
           }
