@@ -1,16 +1,7 @@
 <script setup>
 import { reactive } from "@vue/reactivity";
 import axios from "axios";
-import { stat } from "fs";
 function search(searchID) {
-  // const list = listForm;
-  // const listJson = JSON.stringify(list);
-  // const listJsonParse = JSON.parse(listJson);
-  // console.log(listJsonParse);
-  // const filterID = listJsonParse.filter((grup) =>
-  //   grup.id == searchID ? grup : null
-  // );
-  // console.log(filterID);
   const searchGrup = async () => {
     const { data } = await axios
       .get(`http://walksummit-be.herokuapp.com/api/cari-grup/${searchID}`)
@@ -32,14 +23,16 @@ function search(searchID) {
     const statusPembayaran =
       responseJson.data.status == 0 ? "Belum Bayar" : "Sudah Lunas";
     const jalur = responseJson.data.jalur;
+    const tgl_brangkat = responseJson.data.tgl_brangkat;
     const listContainer = document.querySelector("#list-grup");
 
     listContainer.innerHTML = `
         <div id="info-grup">
-          <p tabindex="0">Id Grup: ${id}</p>
-          <p tabindex="0">Nama Koordinator: ${nama}</p>
-          <p class="status-text" tabindex="0">Status Pembayaran: <span class="status-bayar">${statusPembayaran}</span></p>
-          <p tabindex="0">Jalur: ${jalur}</p>
+          <p tabindex="0">Id Grup : ${id}</p>
+          <p tabindex="0">Nama Koordinator : ${nama}</p>
+          <p tabindex="0">Jalur : ${jalur}</p>
+          <p tabindex="0">Tanggal Berangkat : ${tgl_brangkat}</p>
+          <p class="status-text" tabindex="0">Status Pembayaran : <span class="status-bayar">${statusPembayaran}</span></p>
         </div>
         <style>
         #info-grup{
@@ -48,10 +41,14 @@ function search(searchID) {
           border-radius: 5px;
         }
         #info-grup p {
-          margin: 10px 10px;
+          margin: 15px 10px;
           font-family: 'Quicksand', sans-serif;
           text-transform: uppercase;
-        }</style>`;
+        }
+        .status-bayar {
+          color : white;
+        }
+        </style>`;
     listContainer.style.display = "flex";
     listContainer.style.flexDirection = "column";
     listContainer.style.gap = "20px";
@@ -89,52 +86,6 @@ function clearSearch() {
   inputSearch.value = "";
   listContainer.innerHTML = "";
 }
-// const listForm = reactive([
-//   {
-//     id: 1,
-//     nik: 123,
-//     nama: "pertama",
-//     gender: "pria",
-//     alamat: "malang",
-//     noHp: "surabaya",
-//     noHpOrtu: "123123",
-//     statusPembayaran: "Belum",
-//     jalur: "barat",
-//   },
-//   {
-//     id: 2,
-//     nik: 1234,
-//     nama: "kedua",
-//     gender: "wanita",
-//     alamat: "surabaya",
-//     noHp: "12312",
-//     noHpOrtu: "555",
-//     statusPembayaran: "Belum",
-//     jalur: "barat",
-//   },
-//   {
-//     id: 3,
-//     nik: 12345,
-//     nama: "ketiga",
-//     gender: "pria",
-//     alamat: "surabaya",
-//     noHp: "12312",
-//     noHpOrtu: "1231",
-//     statusPembayaran: "Belum",
-//     jalur: "barat",
-//   },
-//   {
-//     id: 4,
-//     nik: 1234456,
-//     nama: "keempat",
-//     gender: "pria",
-//     alamat: "mlg",
-//     noHp: "09123",
-//     noHpOrtu: "123123",
-//     statusPembayaran: "Belum",
-//     jalur: "barat",
-//   },
-// ]);
 </script>
 
 <template>
